@@ -464,7 +464,7 @@ def opt_dif_line(git_diff_line: str):
                 if match_issue_support_file_type(path_ary[1], ISSUES_SUPPORT_FILE_TYPE_ARRAY):
                     issue_opt(path_ary[1])
                 else:
-                    logging.info("文件类型原因忽略文件: " + path_ary[1])
+                    logging.info("\t文件类型原因忽略文件: " + path_ary[1])
             except Exception as exception:
                 logging.error(modify + "失败,请查看堆栈信息")
                 logging.exception(exception)

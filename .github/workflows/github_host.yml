@@ -43,7 +43,7 @@ jobs:
           # 这里的环境变量可以在脚本中使用
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # 必选配置项
-          ISSUES_MAP_FILE_NUMBER:  '9'
+          ISSUES_MAP_FILE_NUMBER:  '1'
           # 可选配置项
           GITHUB_BRANCH:  'master'
           ISSUES_CONFIG: '.github/github_actions/issues_config.json'

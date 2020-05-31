@@ -29,8 +29,7 @@ jobs:
           # 用于拉取更多历史内容
           fetch-depth: 0
 
-      - uses: TomGarden/TomGitActions@v0.1.2
-        run: python3 ./.github/github_actions/git_action_practice.py
+      - uses: TomGarden/TomGitActions@master
         env:
           # 这里的环境变量可以在脚本中使用
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

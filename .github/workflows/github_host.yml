@@ -34,18 +34,18 @@ jobs:
           pwd
           ls -a -l
 
-      - name: Install dependencies # 步骤显示在 GitHub 上的名称。
-        run: bash ./.github/github_actions/install_dependence_macos.sh
+      # - name: Install dependencies # 步骤显示在 GitHub 上的名称。
+      #   run: bash ./.github/github_actions/install_dependence_macos.sh
 
-      - name: Publish Issues
-        run: python3 ./.github/github_actions/git_action_practice.py
-        env:
-          # 这里的环境变量可以在脚本中使用
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # 必选配置项
-          ISSUES_MAP_FILE_NUMBER:  '1'
-          # 可选配置项
-          GITHUB_BRANCH:  'master'
-          ISSUES_CONFIG: '.github/github_actions/issues_config.json'
-          ISSUES_FOOTER_PATH:  '.github/github_actions/issues_footer.md'
-          ISSUES_HEADER_PATH:  '.github/github_actions/issues_header.md'
+      # - name: Publish Issues
+      #   run: python3 ./.github/github_actions/git_action_practice.py
+      #   env:
+      #     # 这里的环境变量可以在脚本中使用
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     # 必选配置项
+      #     ISSUES_MAP_FILE_NUMBER:  '1'
+      #     # 可选配置项
+      #     GITHUB_BRANCH:  'master'
+      #     ISSUES_CONFIG: '.github/github_actions/issues_config.json'
+      #     ISSUES_FOOTER_PATH:  '.github/github_actions/issues_footer.md'
+      #     ISSUES_HEADER_PATH:  '.github/github_actions/issues_header.md'

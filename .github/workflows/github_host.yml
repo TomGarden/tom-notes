@@ -36,6 +36,9 @@ jobs:
           
       - uses: TomGarden/TomGitActions@v0.1.2
       - uses: ./.github/workflows
+        run: |
+          pwd
+          ls -a -l
         env:
           # 这里的环境变量可以在脚本中使用
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

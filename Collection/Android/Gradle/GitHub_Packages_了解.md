@@ -25,9 +25,8 @@ GitHub Packages , 经过测试 , 上传比较快 , 同等环境下(翻墙代理)
 4. [__无效__ 为 aar 关联源代码](https://kaywu.xyz/2016/05/01/Maven-aar-source/)
 5. [__有效__ 为 aar 关联源代码](https://stackoverflow.com/questions/26874498/publish-an-android-library-to-maven-with-aar-and-source-jar)
 
-存在的问题就是 , 使用上传到 GitHub Packages Lib 还需要 Lib 维护者提供一个私钥 ,
+存在的问题就是 , 使用上传到 GitHub Packages 的 Lib 还需要 提供自己的 GitHub 身份认证 , 
 虽然这也不是什么复杂的操作 , 但是比起直接一行代码完成依赖 , 还是会多那么几行烦人的代码 .
-当然啦, 好处就是在 Lib 与依赖着之间增加了一个控制层 , 开发者能更轻松的对自己的开源代码做必要的控制与调整
 
 碰到的问题 : aar 上传后无法查看源码 , 已经解决了 , 这个小细节等下一阶段输出文档的时候再详细描述
 
@@ -173,7 +172,7 @@ repositories {
 ## 0x04. 如果一个人开发了一系列的工具组件 , 如何较简单的完成分发
 1. 创建一个公共组件 repository : TomAndroidLibs
 2. 所有分发组件上传到这个公共组价库
-3. 为使用组件的开发者提供一个仅有只读权限的 Token : 5110b72e46015114b387fbe968629aa72c394171
+3. 为使用组件的开发者提供一个仅有只读权限的 Token : 略
 4. 失败了 , 所以细节略
 5. 可能是因为与仓库地址相关 , 所以上传的过程中报 402
 

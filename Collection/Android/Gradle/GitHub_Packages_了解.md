@@ -176,6 +176,23 @@ repositories {
 4. 失败了 , 所以细节略
 5. 可能是因为与仓库地址相关 , 所以上传的过程中报 402
 
+### 4.1 记录一个异常
+```
+> Task :LibPickColor:publishGprPublicationToLibPickColorRepository FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':LibPickColor:publishGprPublicationToLibPickColorRepository'.
+> Failed to publish publication 'gpr' to repository 'LibPickColor'
+   > Could not PUT 'https://maven.pkg.github.com/TomGarden/lib_pickcolor/io/github/tomgarden/LibPickColor/0.1.3/LibPickColor-0.1.3.aar'. Received status code 422 from server: Unprocessable Entity
+```
+
+[解决方法是将 artifactId 使用小写字母](https://github.community/t/keep-getting-received-status-code-422-from-server-unprocessable-entity/138576)
+
+如果修改名称后找不到文件 `Could not read 'path/lib_pick_color-release.aar' as it does not exist.`
+可以[参照链接 :  🔗 `archivesBaseName = moduleName`](https://github.com/TomGarden/lib_log/blob/master/LibLog/publish_github_packages.gradle)
+
 
 ## 0x05. (这个步骤无结果 , 可以不读)上传到 Maven Central
 

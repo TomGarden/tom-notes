@@ -1,6 +1,7 @@
 
 
-## 0x01. 硬件情况
+## 0x01. 资源情况
+- MAC OS 10.15
 - i7
 - 16G 闪存
 - 500G 硬盘(凑活够用) > 1T 更合适
@@ -338,6 +339,7 @@ FAILED: out/target/product/generic_x86/obj/ETC/treble_sepolicy_tests_27.0_interm
     - 从这里了解到 [AOSP 问题讨论网站](https://android-review.googlesource.com/)
     - 从这里搜索关键字`Fix sepolicy_tests on Mac 10.15`即可找到这个[答案](https://android-review.googlesource.com/c/platform/system/sepolicy/+/1173528)
     - 现在能想到的困难就是 , 如果遇到新问题这个关键字选定和大量结果的阅读和识别也有点困难的
+3. [BigSur 11.1 编译 Android10 报错] : 在上述问题的基础上添加 `11.1` 字段即可 , 但是还有其他未能逾越的异常
 
 ### 3.6. `adb sync` 执行失败
 ```terminate

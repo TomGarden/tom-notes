@@ -11,6 +11,8 @@
 1. maven
 2. github packages
 
+再次研究这部分内容可以考虑下 : https://jitpack.io/
+
 
 ## 0x02. GitHub Packages 了解
 
@@ -192,6 +194,22 @@ Execution failed for task ':LibPickColor:publishGprPublicationToLibPickColorRepo
 
 如果修改名称后找不到文件 `Could not read 'path/lib_pick_color-release.aar' as it does not exist.`
 可以[参照链接 :  🔗 `archivesBaseName = moduleName`](https://github.com/TomGarden/lib_log/blob/master/LibLog/publish_github_packages.gradle)
+
+
+### 4.2. `github package` 重复上传冲突异常
+```
+# 出现这种情况是因为上传包完成后 , 项目首页没有及时刷新包信息 UI 认为上传失败重新发起上传报的异常
+# 上传完成后可以稍等 2 分钟再刷新页面
+
+> Task :lib_system_bar:publishGprPublicationToLib_system_barRepository FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':lib_system_bar:publishGprPublicationToLib_system_barRepository'.
+> Failed to publish publication 'gpr' to repository 'lib_system_bar'
+   > Could not PUT 'https://maven.pkg.github.com/TomGarden/lib_system_bar/io/github/tomgarden/lib_system_bar/0.0.1/lib_system_bar-0.0.1.aar'. Received status code 409 from server: Conflict
+```
 
 
 ## 0x05. (这个步骤无结果 , 可以不读)上传到 Maven Central

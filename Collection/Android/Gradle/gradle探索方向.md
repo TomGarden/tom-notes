@@ -1,0 +1,1 @@
+可以了解下 : `apply from: 'http://test.com/path/other.gradle'` 这样较为统一的配置就不必通过拷贝复用了

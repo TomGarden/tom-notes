@@ -26,10 +26,10 @@
 
 ## 0x02. Systrace(System Trace) : 系统跟踪方法
 
-小节摘要 : Systrace 工具通过跟踪系统的各项资源指标输出一个跟踪文件(我们称为`trace文件`) , 然后通过相应的图形界面解析工具(Perfetto/SystraceHTML)将跟踪文件转换为可视可分析的报表(**推荐 -3-**)
+小节摘要 : Systrace 工具通过跟踪系统的各项资源指标输出一个跟踪文件(我们称为`trace文件`) , 然后通过相应的图形界面解析工具(Perfetto/trace_viewer)将跟踪文件转换为可视可分析的报表(**推荐 -3-**)
 1. Perfetto : 是一个将 `trace文件` 转换为可视化报表的工具 : https://ui.perfetto.dev/
     - ![Perfetto 界面](Image/Perfetto_ui.png.png)
-2. SystraceHTML : 这个名字是个人杜撰出来的 , 没有这个名字 , 这个工具展示出来的 UI 当前已经是`旧用户界面` 了 , 可以通过 Perfetto 工具的 `Legacy UI` 来生成`旧用户界面`
+2. trace_viewer : 这个工具展示出来的 UI 当前已经是`旧用户界面` 了 , 可以通过 Perfetto 工具的 `Legacy UI` 来生成`旧用户界面`
 3. 可以通过 AndroidStudio Profile 打开`trace文件` , 选择进程的时候我选择了 默认的那个 `re-initialized>` 可用 : 这个跟 `Perfetto` 相比 :
     - 这个跟 `Perfetto` 相比选中目标线程后才可以使用检索能力 ; 检索内容可以是 `Trace.beginSection` 函数打的标签也可以是其他内容
     - 但是通过肉眼找到目标`Slices(色块/切片)`的时候 , 是可以列举出子`Slices(色块/切片)`所对应的层级关系的(可折叠)

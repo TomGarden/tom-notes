@@ -29,9 +29,13 @@ https://stackoverflow.com/q/72180366/7707781
 **有人知道问题所在吗 ?**
 
 
+# ======================================================
+
+
+
 ### 1. Question
 I run `"crash_demo.run"` by `spawn-fcgi` .
-How to collect `core` file ?
+How to collect `core` file .
 
 ### 2. Background & Environment
 I'm exolore C++ Web Programming .
@@ -57,11 +61,99 @@ My guess
 2. `core` file is generated  , but i don't the file path .
 
 
-**Does anyone know what happened?**
+Does anyone know what happened?
 
 
 
 
+-------------
+-------------
+### Solution update
+My question is flawed .
+
+Thanks @sehe , my step : 
+1. I read two webpage
+    1. https://man7.org/linux/man-pages/man5/core.5.html
+    2. https://zhuanlan.zhihu.com/p/240633280
+2. [update my `/proc/sys/kernel/core_pattern`](https://stackoverflow.com/a/12760552/7707781)
+    * `core` -> `core_%e_%p_%t` 
+3. `ulimit -c unlimited`
+4. `spawn-fcgi -a 127.0.0.1 -p 9000 -f /path/crash_demo.run`
+5. `sudo find /  core_ | grep core_crash_demo`
+    - result `/path/core_crash_demo._5080_1652169152`
+
+So , my guess on my question is failed . 
+
+The fact is , I don't generate `core` file , when my question.
+
+When my generated `core` file successed , the `core` file path is `crash_demo.run` parent directory .
+
+
+-------------
+-------------
+### Solution update 2
+
+
+再次遇到此问题 ， 我们向作两件事 
+1.  搞清楚 core dump 文件生成的细节
+2.  core dump 文件如何使用
+
+**core dump 文件生成的细节**
+
+主要参考内容 : [core manual](https://man7.org/linux/man-pages/man5/core.5.html)
+
+core manual 中设计的点很多 ， 不同的情况可能遇到不同的问题， 不过基本可以确认，阅读此文件可以解决大多数问题。
+这里我只写出自己关注的点。
+
+要生成 core dump 有几个前提条件 :
+- 对于 core dump 文件的大小 ，有系统层面的限制 ， 可以通过 命令  ulimit 查看和修改
+  - `ulimit -a` 查看   /   `ulimit -c unlimited` 修改
+- 关于 修改 `/proc/sys/kernel/core_pattern` , 
+  - 默认的内容一般为 `core` ， 除非被修改过
+  - 如果文件的首个字符是 `|` 意味通过管道后进一步执行后续命令 ， 细节需要再细读文档，不再展开。
+  - 我们修改为 `core_%e_%p_%t` -> `core_可执行文件名_pid_时间戳`
+  - 修改命令为 : `sudo bash -c 'echo core_%e_%p_%t > /proc/sys/kernel/core_pattern'`
+
+
+再次执行异常程序后可以使用 find 命令查找 core 文件位置了
+- `sudo find /  core_ | grep core_`
+- 我的 core 文件就生成在异常 调用程序语句所执行的文件夹
+  - 程序在 `～/a/b/c/d/exe.run`
+  - 调用为 `~$ /a/b/c/d/exe.run`
+  - core 文件位置为 `~/core`
+
+**core dump 文件如何使用**
+
+1. 使用 vscode 调试 有 ui 更直观些 ， `launch.json` 增加 属性 `coreDumpPath` : https://code.visualstudio.com/docs/cpp/cpp-debug#_memory-dump-debugging
+2. 也可以直接使用 gdb ， 略。
+
+
+### Solution update 2 (English)
+
+we whant to know two point :
+1. how generate core dump file
+2. how to  fine  exception code by core dump file 
+
+#### **how generate core dump file？**
+
+Reference the file : [core manual](https://man7.org/linux/man-pages/man5/core.5.html)
+
+core manual write many point , I just list the point i care :
+1. system limit core dump file size , we need unlimit it:
+  - `ulimit -a` check limit   /   `ulimit -c unlimited` cancel limit
+2. fix `/proc/sys/kernel/core_pattern`
+  - default value is `core`
+  - fix it to -> `core_%e_%p_%t` mean `core_your_execute_file_name_pid_timestemp`
+  - fix cmd : `sudo bash -c 'echo core_%e_%p_%t > /proc/sys/kernel/core_pattern'`
+
+now run your exception , you can got core file .
+- maby you need search it : `sudo find /  core_ | grep core_`
+
+#### **how to  fine  exception code by core dump file ？**
+
+- I use vscode , fix `launch.json` , add `coreDumpPath` , refrence : https://code.visualstudio.com/docs/cpp/cpp-debug#_memory-dump-debugging
+
+# ======================================================
 
 
 #### 1. Question

@@ -1,0 +1,1515 @@
+
+================================================================================ 
+$ ros2 action info --help
+usage: ros2 action info [-h] [-t] [-c] action_name
+
+Print information about an action
+
+positional arguments:
+  action_name       Name of the ROS action to get info (e.g. '/fibonacci')
+
+optional arguments:
+  -h, --help        show this help message and exit
+  -t, --show-types  Additionally show the action type
+  -c, --count       Only display the number of action clients and action
+                    servers
+
+================================================================================ 
+$ ros2 action list --help
+usage: ros2 action list [-h] [-t] [-c]
+
+Output a list of action names
+
+optional arguments:
+  -h, --help           show this help message and exit
+  -t, --show-types     Additionally show the action type
+  -c, --count-actions  Only display the number of actions discovered
+
+================================================================================ 
+$ ros2 action send_goal --help
+usage: ros2 action send_goal [-h] [-f] action_name action_type goal
+
+Send an action goal
+
+positional arguments:
+  action_name     Name of the ROS action (e.g. '/fibonacci')
+  action_type     Type of the ROS action (e.g.
+                  'example_interfaces/action/Fibonacci')
+  goal            Goal request values in YAML format (e.g. '{order: 10}')
+
+optional arguments:
+  -h, --help      show this help message and exit
+  -f, --feedback  Echo feedback messages for the goal
+
+================================================================================ 
+$ ros2 action --help
+usage: ros2 action [-h]
+                   Call `ros2 action <command> -h` for more detailed usage.
+                   ...
+
+Various action related sub-commands
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Commands:
+  info       Print information about an action
+  list       Output a list of action names
+  send_goal  Send an action goal
+
+  Call `ros2 action <command> -h` for more detailed usage.
+
+================================================================================ 
+$ ros2 bag info --help
+usage: ros2 bag info [-h] [-s STORAGE] bag_file
+
+Print information about a bag to the screen
+
+positional arguments:
+  bag_file              bag file to introspect
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s STORAGE, --storage STORAGE
+                        storage identifier to be used to open storage, if no
+                        yaml file exists. Defaults to "sqlite3"
+
+================================================================================ 
+$ ros2 bag play --help
+usage: ros2 bag play [-h] [-s STORAGE]
+                     [--read-ahead-queue-size READ_AHEAD_QUEUE_SIZE] [-r RATE]
+                     [--topics TOPICS [TOPICS ...]]
+                     [--qos-profile-overrides-path QOS_PROFILE_OVERRIDES_PATH]
+                     [-l] [--remap REMAP [REMAP ...]]
+                     bag_file
+
+Play back ROS data from a bag
+
+positional arguments:
+  bag_file              bag file to replay
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s STORAGE, --storage STORAGE
+                        storage identifier to be used, defaults to 'sqlite3'
+  --read-ahead-queue-size READ_AHEAD_QUEUE_SIZE
+                        size of message queue rosbag tries to hold in memory
+                        to help deterministic playback. Larger size will
+                        result in larger memory needs but might prevent delay
+                        of message playback.
+  -r RATE, --rate RATE  rate at which to play back messages. Valid range >
+                        0.0.
+  --topics TOPICS [TOPICS ...]
+                        topics to replay, separated by space. If none
+                        specified, all topics will be replayed.
+  --qos-profile-overrides-path QOS_PROFILE_OVERRIDES_PATH
+                        Path to a yaml file defining overrides of the QoS
+                        profile for specific topics.
+  -l, --loop            enables loop playback when playing a bagfile: it
+                        starts back at the beginning on reaching the end and
+                        plays indefinitely.
+  --remap REMAP [REMAP ...], -m REMAP [REMAP ...]
+                        list of topics to be remapped: in the form
+                        "old_topic1:=new_topic1 old_topic2:=new_topic2 etc."
+
+================================================================================ 
+$ ros2 bag record --help
+usage: ros2 bag record [-h] [-a] [-o OUTPUT] [-s STORAGE]
+                       [-f SERIALIZATION_FORMAT] [--no-discovery]
+                       [-p POLLING_INTERVAL] [-b MAX_BAG_SIZE]
+                       [--max-cache-size MAX_CACHE_SIZE]
+                       [--compression-mode {none,file}]
+                       [--compression-format {zstd}] [--include-hidden-topics]
+                       [--qos-profile-overrides-path QOS_PROFILE_OVERRIDES_PATH]
+                       [topics [topics ...]]
+
+Record ROS data to a bag
+
+positional arguments:
+  topics                topics to be recorded
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -a, --all             recording all topics, required if no topics are listed
+                        explicitly.
+  -o OUTPUT, --output OUTPUT
+                        destination of the bagfile to create, defaults to a
+                        timestamped folder in the current directory
+  -s STORAGE, --storage STORAGE
+                        storage identifier to be used, defaults to 'sqlite3'
+  -f SERIALIZATION_FORMAT, --serialization-format SERIALIZATION_FORMAT
+                        rmw serialization format in which the messages are
+                        saved, defaults to the rmw currently in use
+  --no-discovery        disables topic auto discovery during recording: only
+                        topics present at startup will be recorded
+  -p POLLING_INTERVAL, --polling-interval POLLING_INTERVAL
+                        time in ms to wait between querying available topics
+                        for recording. It has no effect if --no-discovery is
+                        enabled.
+  -b MAX_BAG_SIZE, --max-bag-size MAX_BAG_SIZE
+                        maximum size in bytes before the bagfile will be
+                        split. Default it is zero, recording written in single
+                        bagfile and splitting is disabled.
+  --max-cache-size MAX_CACHE_SIZE
+                        maximum amount of messages to hold in cache before
+                        writing to disk. Default it is zero, writing every
+                        message directly to disk.
+  --compression-mode {none,file}
+                        Determine whether to compress bag files. Default is
+                        "none".
+  --compression-format {zstd}
+                        Specify the compression format/algorithm. Default is
+                        none.
+  --include-hidden-topics
+                        record also hidden topics.
+  --qos-profile-overrides-path QOS_PROFILE_OVERRIDES_PATH
+                        Path to a yaml file defining overrides of the QoS
+                        profile for specific topics.
+
+================================================================================ 
+$ ros2 bag --help
+usage: ros2 bag [-h] Call `ros2 bag <command> -h` for more detailed usage. ...
+
+Various rosbag related sub-commands
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Commands:
+  info    Print information about a bag to the screen
+  play    Play back ROS data from a bag
+  record  Record ROS data to a bag
+
+  Call `ros2 bag <command> -h` for more detailed usage.
+
+================================================================================ 
+$ ros2 component list --help
+usage: ros2 component list [-h] [--spin-time SPIN_TIME] [--no-daemon]
+                           [--containers-only]
+                           [container_node_name]
+
+Output a list of running containers and components
+
+positional arguments:
+  container_node_name   Name of the container node to list components from
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  --containers-only     List found containers nodes only
+
+================================================================================ 
+$ ros2 component load --help
+usage: ros2 component load [-h] [--spin-time SPIN_TIME] [--no-daemon]
+                           [-n NODE_NAME] [--node-namespace NODE_NAMESPACE]
+                           [--log-level LOG_LEVEL] [-r REMAP_RULES]
+                           [-p PARAMETERS] [-e EXTRA_ARGUMENTS] [-q]
+                           container_node_name package_name plugin_name
+
+Load a component into a container node
+
+positional arguments:
+  container_node_name   Container node name to unload component from
+  package_name          Name of the package where the component is to be found
+  plugin_name           Type name of the component to be loaded
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  -n NODE_NAME, --node-name NODE_NAME
+                        Component node name
+  --node-namespace NODE_NAMESPACE
+                        Component node namespace
+  --log-level LOG_LEVEL
+                        Component node log level
+  -r REMAP_RULES, --remap-rule REMAP_RULES
+                        Component node remapping rules, in the 'from:=to' form
+  -p PARAMETERS, --parameter PARAMETERS
+                        Component node parameters, in the 'name:=value' form
+  -e EXTRA_ARGUMENTS, --extra-argument EXTRA_ARGUMENTS
+                        Extra arguments for the container, in the
+                        'name:=value' form
+  -q, --quiet           Only print component unique IDs and names
+
+================================================================================ 
+$ ros2 component standalone --help
+usage: ros2 component standalone [-h] [--spin-time SPIN_TIME] [--no-daemon]
+                                 [-n NODE_NAME]
+                                 [--node-namespace NODE_NAMESPACE]
+                                 [--log-level LOG_LEVEL] [-r REMAP_RULES]
+                                 [-p PARAMETERS] [-e EXTRA_ARGUMENTS]
+                                 [-c CONTAINER_NODE_NAME]
+                                 package_name plugin_name
+
+Run a component into its own standalone container node
+
+positional arguments:
+  package_name          Name of the package where the component is to be found
+  plugin_name           Type name of the component to be loaded
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  -n NODE_NAME, --node-name NODE_NAME
+                        Component node name
+  --node-namespace NODE_NAMESPACE
+                        Component node namespace
+  --log-level LOG_LEVEL
+                        Component node log level
+  -r REMAP_RULES, --remap-rule REMAP_RULES
+                        Component node remapping rules, in the 'from:=to' form
+  -p PARAMETERS, --parameter PARAMETERS
+                        Component node parameters, in the 'name:=value' form
+  -e EXTRA_ARGUMENTS, --extra-argument EXTRA_ARGUMENTS
+                        Extra arguments for the container, in the
+                        'name:=value' form
+  -c CONTAINER_NODE_NAME, --container-node-name CONTAINER_NODE_NAME
+                        Name of the standalone container node to be run
+
+================================================================================ 
+$ ros2 component types --help
+usage: ros2 component types [-h] [--spin-time SPIN_TIME] [--no-daemon]
+                            [package_name]
+
+Output a list of components registered in the ament index
+
+positional arguments:
+  package_name          Package name to look for registered components in
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+
+================================================================================ 
+$ ros2 component unload --help
+usage: ros2 component unload [-h] [--spin-time SPIN_TIME] [--no-daemon] [-q]
+                             container_node_name component_uid
+                             [component_uid ...]
+
+Unload a component from a container node
+
+positional arguments:
+  container_node_name   Container node name to unload component from
+  component_uid         Unique ID of the component to be unloaded
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  -q, --quiet           Only print component unique IDs
+
+================================================================================ 
+$ ros2 component --help
+usage: ros2 component [-h]
+                      Call `ros2 component <command> -h` for more detailed
+                      usage. ...
+
+Various component related sub-commands
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Commands:
+  list        Output a list of running containers and components
+  load        Load a component into a container node
+  standalone  Run a component into its own standalone container node
+  types       Output a list of components registered in the ament index
+  unload      Unload a component from a container node
+
+  Call `ros2 component <command> -h` for more detailed usage.
+
+================================================================================ 
+$ ros2 daemon start --help
+usage: ros2 daemon start [-h] [--debug]
+
+Start the daemon if it isn't running
+
+optional arguments:
+  -h, --help   show this help message and exit
+  --debug, -d  Print debug messages
+
+================================================================================ 
+$ ros2 daemon status --help
+usage: ros2 daemon status [-h]
+
+Output the status of the daemon
+
+optional arguments:
+  -h, --help  show this help message and exit
+
+================================================================================ 
+$ ros2 daemon stop --help
+usage: ros2 daemon stop [-h]
+
+Stop the daemon if it is running
+
+optional arguments:
+  -h, --help  show this help message and exit
+
+================================================================================ 
+$ ros2 daemon --help
+usage: ros2 daemon [-h]
+                   Call `ros2 daemon <command> -h` for more detailed usage.
+                   ...
+
+Various daemon related sub-commands
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Commands:
+  start   Start the daemon if it isn't running
+  status  Output the status of the daemon
+  stop    Stop the daemon if it is running
+
+  Call `ros2 daemon <command> -h` for more detailed usage.
+
+================================================================================ 
+$ ros2 doctor hello --help
+usage: ros2 doctor hello [-h] [-t [TOPIC]] [-ep N] [-pp N] [--ttl TTL] [-1]
+
+Check network connectivity between multiple hosts
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -t [TOPIC], --topic [TOPIC]
+                        Name of ROS topic to publish to (default:
+                        '/canyouhearme')
+  -ep N, --emit-period N
+                        Time period to publish/send one message (default:
+                        0.1s)
+  -pp N, --print-period N
+                        Time period to print summary table (default: 1.0s)
+  --ttl TTL             TTL for multicast send (default: None)
+  -1, --once            Publish and multicast send for one emit period then
+                        exit; used in test case.
+
+================================================================================ 
+$ ros2 doctor --help
+usage: ros2 doctor [-h] [--report | --report-failed] [--include-warnings]
+                   Call `ros2 doctor <command> -h` for more detailed usage.
+                   ...
+
+Check ROS setup and other potential issues
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --report, -r          Print all reports.
+  --report-failed, -rf  Print reports of failed checks only.
+  --include-warnings, -iw
+                        Include warnings as failed checks. Warnings are
+                        ignored by default.
+
+Commands:
+  hello  Check network connectivity between multiple hosts
+
+  Call `ros2 doctor <command> -h` for more detailed usage.
+
+================================================================================ 
+$ ros2 interface list --help
+usage: ros2 interface list [-h] [-m] [-s] [-a]
+
+List all interface types available
+
+optional arguments:
+  -h, --help          show this help message and exit
+  -m, --only-msgs     Print out only the message types
+  -s, --only-srvs     Print out only the service types
+  -a, --only-actions  Print out only the action types
+
+================================================================================ 
+$ ros2 interface package --help
+usage: ros2 interface package [-h] package_name
+
+Output a list of available interface types within one package
+
+positional arguments:
+  package_name  Name of the ROS package (e.g. 'example_interfaces')
+
+optional arguments:
+  -h, --help    show this help message and exit
+
+================================================================================ 
+$ ros2 interface packages --help
+usage: ros2 interface packages [-h] [-m] [-s] [-a]
+
+Output a list of packages that provide interfaces
+
+optional arguments:
+  -h, --help          show this help message and exit
+  -m, --only-msgs     Only list packages that generate messages
+  -s, --only-srvs     Only list packages that generate services
+  -a, --only-actions  Only list packages that generate actions
+
+================================================================================ 
+$ ros2 interface proto --help
+usage: ros2 interface proto [-h] [--no-quotes] type
+
+Output an interface prototype
+
+positional arguments:
+  type         Show an interface definition (e.g.
+               'example_interfaces/msg/String')
+
+optional arguments:
+  -h, --help   show this help message and exit
+  --no-quotes  if true output has no outer quotes.
+
+================================================================================ 
+$ ros2 interface show --help
+usage: ros2 interface show [-h] type
+
+Output the interface definition
+
+positional arguments:
+  type        Show an interface definition (e.g.
+              'example_interfaces/msg/String'). Passing '-' reads the argument
+              from stdin (e.g. 'ros2 topic type /chatter | ros2 interface show
+              -').
+
+optional arguments:
+  -h, --help  show this help message and exit
+
+================================================================================ 
+$ ros2 interface --help
+usage: ros2 interface [-h]
+                      Call `ros2 interface <command> -h` for more detailed
+                      usage. ...
+
+Show information about ROS interfaces
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Commands:
+  list      List all interface types available
+  package   Output a list of available interface types within one package
+  packages  Output a list of packages that provide interfaces
+  proto     Output an interface prototype
+  show      Output the interface definition
+
+  Call `ros2 interface <command> -h` for more detailed usage.
+
+================================================================================ 
+$ ros2 launch --help
+usage: ros2 launch [-h] [-n] [-d] [-p | -s] [-a]
+                   package_name [launch_file_name]
+                   [launch_arguments [launch_arguments ...]]
+
+Run a launch file
+
+positional arguments:
+  package_name          Name of the ROS package which contains the launch file
+  launch_file_name      Name of the launch file
+  launch_arguments      Arguments to the launch file; '<name>:=<value>' (for
+                        duplicates, last one wins)
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n, --noninteractive  Run the launch system non-interactively, with no
+                        terminal associated
+  -d, --debug           Put the launch system in debug mode, provides more
+                        verbose output.
+  -p, --print, --print-description
+                        Print the launch description to the console without
+                        launching it.
+  -s, --show-args, --show-arguments
+                        Show arguments that may be given to the launch file.
+  -a, --show-all-subprocesses-output
+                        Show all launched subprocesses' output by overriding
+                        their output configuration using the
+                        OVERRIDE_LAUNCH_PROCESS_OUTPUT envvar.
+
+================================================================================ 
+$ ros2 lifecycle get --help
+usage: ros2 lifecycle get [-h] [--spin-time SPIN_TIME] [--no-daemon]
+                          [--include-hidden-nodes]
+                          [node_name]
+
+Get lifecycle state for one or more nodes
+
+positional arguments:
+  node_name             Name of the ROS node. If no name is provided, then get
+                        the state for all nodes.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  --include-hidden-nodes
+                        Consider hidden nodes as well
+
+================================================================================ 
+$ ros2 lifecycle list --help
+usage: ros2 lifecycle list [-h] [--spin-time SPIN_TIME] [--no-daemon]
+                           [--include-hidden-nodes] [-a]
+                           node_name
+
+Output a list of available transitions
+
+positional arguments:
+  node_name             Name of the ROS node
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  --include-hidden-nodes
+                        Consider hidden nodes as well
+  -a, --all             Display all existing transitions
+
+================================================================================ 
+$ ros2 lifecycle nodes --help
+usage: ros2 lifecycle nodes [-h] [--spin-time SPIN_TIME] [--no-daemon] [-a]
+                            [-c]
+
+Output a list of nodes with lifecycle
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  -a, --all             Display all nodes even hidden ones
+  -c, --count-nodes     Only display the number of nodes discovered
+
+================================================================================ 
+$ ros2 lifecycle set --help
+usage: ros2 lifecycle set [-h] [--spin-time SPIN_TIME] [--no-daemon]
+                          [--include-hidden-nodes]
+                          node_name transition
+
+Trigger lifecycle state transition
+
+positional arguments:
+  node_name             Name of the ROS node
+  transition            The lifecycle transition
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  --include-hidden-nodes
+                        Consider hidden nodes as well
+
+================================================================================ 
+$ ros2 lifecycle --help
+usage: ros2 lifecycle [-h]
+                      Call `ros2 lifecycle <command> -h` for more detailed
+                      usage. ...
+
+Various lifecycle related sub-commands
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Commands:
+  get    Get lifecycle state for one or more nodes
+  list   Output a list of available transitions
+  nodes  Output a list of nodes with lifecycle
+  set    Trigger lifecycle state transition
+
+  Call `ros2 lifecycle <command> -h` for more detailed usage.
+
+================================================================================ 
+$ ros2 multicast receive --help
+usage: ros2 multicast receive [-h]
+
+Receive a single UDP multicast packet
+
+optional arguments:
+  -h, --help  show this help message and exit
+
+================================================================================ 
+$ ros2 multicast send --help
+usage: ros2 multicast send [-h] [--ttl TTL]
+
+Send a single UDP multicast packet
+
+optional arguments:
+  -h, --help  show this help message and exit
+  --ttl TTL   The multicast TTL
+
+================================================================================ 
+$ ros2 multicast --help
+usage: ros2 multicast [-h]
+                      Call `ros2 multicast <command> -h` for more detailed
+                      usage. ...
+
+Various multicast related sub-commands
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Commands:
+  receive  Receive a single UDP multicast packet
+  send     Send a single UDP multicast packet
+
+  Call `ros2 multicast <command> -h` for more detailed usage.
+
+================================================================================ 
+$ ros2 node info --help
+usage: ros2 node info [-h] [--spin-time SPIN_TIME] [--no-daemon]
+                      [--include-hidden]
+                      node_name
+
+Output information about a node
+
+positional arguments:
+  node_name             Node name to request information
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  --include-hidden      Display hidden topics, services, and actions as well
+
+================================================================================ 
+$ ros2 node list --help
+usage: ros2 node list [-h] [--spin-time SPIN_TIME] [--no-daemon] [-a] [-c]
+
+Output a list of available nodes
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  -a, --all             Display all nodes even hidden ones
+  -c, --count-nodes     Only display the number of nodes discovered
+
+================================================================================ 
+$ ros2 node --help
+usage: ros2 node [-h]
+                 Call `ros2 node <command> -h` for more detailed usage. ...
+
+Various node related sub-commands
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Commands:
+  info  Output information about a node
+  list  Output a list of available nodes
+
+  Call `ros2 node <command> -h` for more detailed usage.
+
+================================================================================ 
+$ ros2 param delete --help
+usage: ros2 param delete [-h] [--spin-time SPIN_TIME] [--no-daemon]
+                         [--include-hidden-nodes]
+                         node_name parameter_name
+
+Delete parameter
+
+positional arguments:
+  node_name             Name of the ROS node
+  parameter_name        Name of the parameter
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  --include-hidden-nodes
+                        Consider hidden nodes as well
+
+================================================================================ 
+$ ros2 param describe --help
+usage: ros2 param describe [-h] [--spin-time SPIN_TIME] [--no-daemon]
+                           [--include-hidden-nodes]
+                           node_name parameter_names [parameter_names ...]
+
+Show descriptive information about declared parameters
+
+positional arguments:
+  node_name             Name of the ROS node
+  parameter_names       Names of the parameters
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  --include-hidden-nodes
+                        Consider hidden nodes as well
+
+================================================================================ 
+$ ros2 param dump --help
+usage: ros2 param dump [-h] [--spin-time SPIN_TIME] [--no-daemon]
+                       [--include-hidden-nodes] [--output-dir OUTPUT_DIR]
+                       [--print]
+                       node_name
+
+Dump the parameters of a node to a yaml file
+
+positional arguments:
+  node_name             Name of the ROS node
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  --include-hidden-nodes
+                        Consider hidden nodes as well
+  --output-dir OUTPUT_DIR
+                        The absolute path were to save the generated file
+  --print               Print generated file in terminal rather than saving a
+                        file.
+
+================================================================================ 
+$ ros2 param get --help
+usage: ros2 param get [-h] [--spin-time SPIN_TIME] [--no-daemon]
+                      [--include-hidden-nodes] [--hide-type]
+                      node_name parameter_name
+
+Get parameter
+
+positional arguments:
+  node_name             Name of the ROS node
+  parameter_name        Name of the parameter
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  --include-hidden-nodes
+                        Consider hidden nodes as well
+  --hide-type           Hide the type information
+
+================================================================================ 
+$ ros2 param list --help
+usage: ros2 param list [-h] [--spin-time SPIN_TIME] [--no-daemon]
+                       [--include-hidden-nodes]
+                       [--param-prefixes PARAM_PREFIXES [PARAM_PREFIXES ...]]
+                       [node_name]
+
+Output a list of available parameters
+
+positional arguments:
+  node_name             Name of the ROS node
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  --include-hidden-nodes
+                        Consider hidden nodes as well
+  --param-prefixes PARAM_PREFIXES [PARAM_PREFIXES ...]
+                        Only list parameters with the provided prefixes
+
+================================================================================ 
+$ ros2 param load --help
+usage: ros2 param load [-h] [--spin-time SPIN_TIME] [--no-daemon]
+                       [--include-hidden-nodes] [--no-use-wildcard]
+                       node_name parameter_file
+
+Load parameter file for a node
+
+positional arguments:
+  node_name             Name of the ROS node
+  parameter_file        Parameter file
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  --include-hidden-nodes
+                        Consider hidden nodes as well
+  --no-use-wildcard     Do not load parameters in the '/**' namespace into the
+                        node
+
+================================================================================ 
+$ ros2 param set --help
+usage: ros2 param set [-h] [--spin-time SPIN_TIME] [--no-daemon]
+                      [--include-hidden-nodes]
+                      node_name parameter_name value
+
+Set parameter
+
+positional arguments:
+  node_name             Name of the ROS node
+  parameter_name        Name of the parameter
+  value                 Value of the parameter
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  --include-hidden-nodes
+                        Consider hidden nodes as well
+
+================================================================================ 
+$ ros2 param --help
+usage: ros2 param [-h]
+                  Call `ros2 param <command> -h` for more detailed usage. ...
+
+Various param related sub-commands
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Commands:
+  delete    Delete parameter
+  describe  Show descriptive information about declared parameters
+  dump      Dump the parameters of a node to a yaml file
+  get       Get parameter
+  list      Output a list of available parameters
+  load      Load parameter file for a node
+  set       Set parameter
+
+  Call `ros2 param <command> -h` for more detailed usage.
+
+================================================================================ 
+$ ros2 pkg create --build-type ament_cmake --node-name my_node \
+  my_package
+$ ros2 pkg create --help
+usage: ros2 pkg create [-h] [--package-format {2,3}]
+                       [--description DESCRIPTION] [--license LICENSE]
+                       [--destination-directory DESTINATION_DIRECTORY]
+                       [--build-type {cmake,ament_cmake,ament_python}]
+                       [--dependencies DEPENDENCIES [DEPENDENCIES ...]]
+                       [--maintainer-email MAINTAINER_EMAIL]
+                       [--maintainer-name MAINTAINER_NAME]
+                       [--node-name NODE_NAME] [--library-name LIBRARY_NAME]
+                       package_name
+
+Create a new ROS2 package
+
+positional arguments:
+  package_name          The package name
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --package-format {2,3}, --package_format {2,3}
+                        The package.xml format.
+  --description DESCRIPTION
+                        The description given in the package.xml
+  --license LICENSE     The license attached to this package
+  --destination-directory DESTINATION_DIRECTORY
+                        Directory where to create the package directory
+  --build-type {cmake,ament_cmake,ament_python}
+                        The build type to process the package with
+  --dependencies DEPENDENCIES [DEPENDENCIES ...]
+                        list of dependencies
+  --maintainer-email MAINTAINER_EMAIL
+                        email address of the maintainer of this package
+  --maintainer-name MAINTAINER_NAME
+                        name of the maintainer of this package
+  --node-name NODE_NAME
+                        name of the empty executable
+  --library-name LIBRARY_NAME
+                        name of the empty library
+
+================================================================================ 
+$ ros2 pkg executables --help
+usage: ros2 pkg executables [-h] [--full-path] [package_name]
+
+Output a list of package specific executables
+
+positional arguments:
+  package_name  The package name
+
+optional arguments:
+  -h, --help    show this help message and exit
+  --full-path   Show full path of each executable
+
+================================================================================ 
+$ ros2 pkg list --help
+usage: ros2 pkg list [-h]
+
+Output a list of available packages
+
+optional arguments:
+  -h, --help  show this help message and exit
+
+================================================================================ 
+$ ros2 pkg prefix --help
+usage: ros2 pkg prefix [-h] [--share] package_name
+
+Output the prefix path of a package
+
+positional arguments:
+  package_name  The package name
+
+optional arguments:
+  -h, --help    show this help message and exit
+  --share       Show share directory for the package
+
+================================================================================ 
+$ ros2 pkg xml --help
+usage: ros2 pkg xml [-h] [-t TAG] package_name
+
+Output the XML of the package manifest or a specific tag
+
+positional arguments:
+  package_name       The package name
+
+optional arguments:
+  -h, --help         show this help message and exit
+  -t TAG, --tag TAG  The XML tag to output (e.g. 'version')
+
+================================================================================ 
+$ ros2 pkg --help
+usage: ros2 pkg [-h] Call `ros2 pkg <command> -h` for more detailed usage. ...
+
+Various package related sub-commands
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Commands:
+  create       Create a new ROS2 package
+  executables  Output a list of package specific executables
+  list         Output a list of available packages
+  prefix       Output the prefix path of a package
+  xml          Output the XML of the package manifest or a specific tag
+
+  Call `ros2 pkg <command> -h` for more detailed usage.
+
+================================================================================ 
+$ ros2 run --help
+usage: ros2 run [-h] [--prefix PREFIX] package_name executable_name ...
+
+Run a package specific executable
+
+positional arguments:
+  package_name     Name of the ROS package
+  executable_name  Name of the executable
+  argv             Pass arbitrary arguments to the executable
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --prefix PREFIX  Prefix command, which should go before the executable.
+                   Command must be wrapped in quotes if it contains spaces
+                   (e.g. --prefix 'gdb -ex run --args').
+
+================================================================================ 
+$ ros2 security create_key --help
+usage: ros2 security create_key [-h] ROOT NAME
+
+Create key
+
+positional arguments:
+  ROOT        root path of keystore
+  NAME        key name, aka ROS enclave name
+
+optional arguments:
+  -h, --help  show this help message and exit
+
+================================================================================ 
+$ ros2 security create_keystore --help
+usage: ros2 security create_keystore [-h] ROOT
+
+Create keystore
+
+positional arguments:
+  ROOT        root path of keystore
+
+optional arguments:
+  -h, --help  show this help message and exit
+
+================================================================================ 
+$ ros2 security create_permission --help
+usage: ros2 security create_permission [-h] ROOT NAME POLICY_FILE_PATH
+
+Create permission
+
+positional arguments:
+  ROOT              root path of keystore
+  NAME              key name, aka ROS enclave name
+  POLICY_FILE_PATH  path of the policy xml file
+
+optional arguments:
+  -h, --help        show this help message and exit
+
+================================================================================ 
+$ ros2 security generate_artifacts --help
+usage: ros2 security generate_artifacts [-h] [-k KEYSTORE_ROOT_PATH]
+                                        [-e [ENCLAVES [ENCLAVES ...]]]
+                                        [-p [POLICY_FILES [POLICY_FILES ...]]]
+
+Generate keys and permission files from a list of identities and policy files
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -k KEYSTORE_ROOT_PATH, --keystore-root-path KEYSTORE_ROOT_PATH
+                        root path of keystore
+  -e [ENCLAVES [ENCLAVES ...]], --enclaves [ENCLAVES [ENCLAVES ...]]
+                        list of identities, aka ROS security enclave names
+  -p [POLICY_FILES [POLICY_FILES ...]], --policy-files [POLICY_FILES [POLICY_FILES ...]]
+                        list of policy xml file paths
+
+================================================================================ 
+$ ros2 security generate_policy --help
+usage: ros2 security generate_policy [-h] [--spin-time SPIN_TIME]
+                                     [--no-daemon]
+                                     POLICY_FILE_PATH
+
+Generate XML policy file from ROS graph data
+
+positional arguments:
+  POLICY_FILE_PATH      path of the policy xml file
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+
+================================================================================ 
+$ ros2 security list_keys --help
+usage: ros2 security list_keys [-h] ROOT
+
+List keys
+
+positional arguments:
+  ROOT        root path of keystore
+
+optional arguments:
+  -h, --help  show this help message and exit
+
+================================================================================ 
+$ ros2 security --help
+usage: ros2 security [-h]
+                     Call `ros2 security <command> -h` for more detailed
+                     usage. ...
+
+Various security related sub-commands
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Commands:
+  create_key          Create key
+  create_keystore     Create keystore
+  create_permission   Create permission
+  generate_artifacts  Generate keys and permission files from a list of identities and policy files
+  generate_policy     Generate XML policy file from ROS graph data
+  list_keys           List keys
+
+  Call `ros2 security <command> -h` for more detailed usage.
+
+================================================================================ 
+$ ros2 service call --help
+usage: ros2 service call [-h] [-r N] service_name service_type [values]
+
+Call a service
+
+positional arguments:
+  service_name    Name of the ROS service to call to (e.g. '/add_two_ints')
+  service_type    Type of the ROS service (e.g. 'std_srvs/srv/Empty')
+  values          Values to fill the service request with in YAML format (e.g.
+                  '{a: 1, b: 2}'), otherwise the service request will be
+                  published with default values
+
+optional arguments:
+  -h, --help      show this help message and exit
+  -r N, --rate N  Repeat the call at a specific rate in Hz
+
+================================================================================ 
+$ ros2 service find --help
+usage: ros2 service find [-h] [-c] [--include-hidden-services] service_type
+
+Output a list of available services of a given type
+
+positional arguments:
+  service_type          Name of the ROS service type to filter for (e.g.
+                        'rcl_interfaces/srv/ListParameters')
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c, --count-services  Only display the number of services discovered
+  --include-hidden-services
+                        Consider hidden services as well
+
+================================================================================ 
+$ ros2 service list --help
+usage: ros2 service list [-h] [--spin-time SPIN_TIME] [--no-daemon] [-t] [-c]
+
+Output a list of available services
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  -t, --show-types      Additionally show the service type
+  -c, --count-services  Only display the number of services discovered
+
+================================================================================ 
+$ ros2 service type --help
+usage: ros2 service type [-h] service_name
+
+Output a service's type
+
+positional arguments:
+  service_name  Name of the ROS service to get type (e.g.
+                '/talker/list_parameters')
+
+optional arguments:
+  -h, --help    show this help message and exit
+
+================================================================================ 
+$ ros2 service --help
+usage: ros2 service [-h] [--include-hidden-services]
+                    Call `ros2 service <command> -h` for more detailed usage.
+                    ...
+
+Various service related sub-commands
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --include-hidden-services
+                        Consider hidden services as well
+
+Commands:
+  call  Call a service
+  find  Output a list of available services of a given type
+  list  Output a list of available services
+  type  Output a service's type
+
+  Call `ros2 service <command> -h` for more detailed usage.
+
+================================================================================ 
+$ ros2 topic bw --help
+usage: ros2 topic bw [-h] [--window WINDOW] topic
+
+Display bandwidth used by topic
+
+positional arguments:
+  topic                 Topic name to monitor for bandwidth utilization
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --window WINDOW, -w WINDOW
+                        maximum window size, in # of messages, for calculating
+                        rate (default: 100)
+
+================================================================================ 
+$ ros2 topic delay --help
+usage: ros2 topic delay [-h] [--window WINDOW] topic
+
+Display delay of topic from timestamp in header
+
+positional arguments:
+  topic                 Topic name to calculate the delay for
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --window WINDOW, -w WINDOW
+                        window size, in # of messages, for calculating rate,
+                        string to (default: 10000)
+
+================================================================================ 
+$ ros2 topic echo --help
+usage: ros2 topic echo [-h]
+                       [--qos-profile {unknown,system_default,sensor_data,services_default,parameters,parameter_events,action_status_default}]
+                       [--qos-depth N]
+                       [--qos-history {system_default,keep_last,keep_all,unknown}]
+                       [--qos-reliability {system_default,reliable,best_effort,unknown}]
+                       [--qos-durability {system_default,transient_local,volatile,unknown}]
+                       [--csv] [--full-length]
+                       [--truncate-length TRUNCATE_LENGTH] [--no-arr]
+                       [--no-str]
+                       topic_name [message_type]
+
+Output messages from a topic
+
+positional arguments:
+  topic_name            Name of the ROS topic to listen to (e.g. '/chatter')
+  message_type          Type of the ROS message (e.g. 'std_msgs/msg/String')
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --qos-profile {unknown,system_default,sensor_data,services_default,parameters,parameter_events,action_status_default}
+                        Quality of service preset profile to subscribe with
+                        (default: sensor_data)
+  --qos-depth N         Queue size setting to subscribe with (overrides depth
+                        value of --qos-profile option)
+  --qos-history {system_default,keep_last,keep_all,unknown}
+                        History of samples setting to subscribe with
+                        (overrides history value of --qos-profile option,
+                        default: keep_last)
+  --qos-reliability {system_default,reliable,best_effort,unknown}
+                        Quality of service reliability setting to subscribe
+                        with (overrides reliability value of --qos-profile
+                        option, default: best_effort)
+  --qos-durability {system_default,transient_local,volatile,unknown}
+                        Quality of service durability setting to subscribe
+                        with (overrides durability value of --qos-profile
+                        option, default: volatile)
+  --csv                 Output all recursive fields separated by commas (e.g.
+                        for plotting)
+  --full-length, -f     Output all elements for arrays, bytes, and string with
+                        a length > '--truncate-length', by default they are
+                        truncated after '--truncate-length' elements with
+                        '...''
+  --truncate-length TRUNCATE_LENGTH, -l TRUNCATE_LENGTH
+                        The length to truncate arrays, bytes, and string to
+                        (default: 128)
+  --no-arr              Don't print array fields of messages
+  --no-str              Don't print string fields of messages
+
+================================================================================ 
+$ ros2 topic find --help
+usage: ros2 topic find [-h] [-c] [--include-hidden-topics] topic_type
+
+Output a list of available topics of a given type
+
+positional arguments:
+  topic_type            Name of the ROS topic type to filter for (e.g.
+                        'std_msg/msg/String')
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c, --count-topics    Only display the number of topics discovered
+  --include-hidden-topics
+                        Consider hidden topics as well
+
+================================================================================ 
+$ ros2 topic hz --help
+usage: ros2 topic hz [-h] [--window WINDOW] [--filter EXPR] [--wall-time]
+                     topic_name
+
+Print the average publishing rate to screen
+
+positional arguments:
+  topic_name            Name of the ROS topic to listen to (e.g. '/chatter')
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --window WINDOW, -w WINDOW
+                        window size, in # of messages, for calculating rate
+                        (default: 10000)
+  --filter EXPR         only measure messages matching the specified Python
+                        expression
+  --wall-time           calculates rate using wall time which can be helpful
+                        when clock is not published during simulation
+
+================================================================================ 
+$ ros2 topic info --help
+usage: ros2 topic info [-h] [--verbose] topic_name
+
+Print information about a topic
+
+positional arguments:
+  topic_name     Name of the ROS topic to get info (e.g. '/chatter')
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --verbose, -v  Prints detailed information like the node name, node
+                 namespace, topic type, GUID and QoS Profile of the publishers
+                 and subscribers to this topic
+
+================================================================================ 
+$ ros2 topic list --help
+usage: ros2 topic list [-h] [--spin-time SPIN_TIME] [--no-daemon] [-t] [-c]
+                       [--include-hidden-topics]
+
+Output a list of available topics
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --spin-time SPIN_TIME
+                        Spin time in seconds to wait for discovery (only
+                        applies when not using an already running daemon)
+  --no-daemon           Do not spawn nor use an already running daemon
+  -t, --show-types      Additionally show the topic type
+  -c, --count-topics    Only display the number of topics discovered
+  --include-hidden-topics
+                        Consider hidden topics as well
+
+================================================================================ 
+$ ros2 topic pub --help
+usage: ros2 topic pub [-h] [-r N] [-p N] [-1 | -t TIMES] [--keep-alive N]
+                      [-n NODE_NAME]
+                      [--qos-profile {unknown,system_default,sensor_data,services_default,parameters,parameter_events,action_status_default}]
+                      [--qos-depth N]
+                      [--qos-history {system_default,keep_last,keep_all,unknown}]
+                      [--qos-reliability {system_default,reliable,best_effort,unknown}]
+                      [--qos-durability {system_default,transient_local,volatile,unknown}]
+                      topic_name message_type [values]
+
+Publish a message to a topic
+
+positional arguments:
+  topic_name            Name of the ROS topic to publish to (e.g. '/chatter')
+  message_type          Type of the ROS message (e.g. 'std_msgs/String')
+  values                Values to fill the message with in YAML format (e.g.
+                        'data: Hello World'), otherwise the message will be
+                        published with default values
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -r N, --rate N        Publishing rate in Hz (default: 1)
+  -p N, --print N       Only print every N-th published message (default: 1)
+  -1, --once            Publish one message and exit
+  -t TIMES, --times TIMES
+                        Publish this number of times and then exit
+  --keep-alive N        Keep publishing node alive for N seconds after the
+                        last msg (default: 0.1)
+  -n NODE_NAME, --node-name NODE_NAME
+                        Name of the created publishing node
+  --qos-profile {unknown,system_default,sensor_data,services_default,parameters,parameter_events,action_status_default}
+                        Quality of service preset profile to publish with
+                        (default: system_default)
+  --qos-depth N         Queue size setting to publish with (overrides depth
+                        value of --qos-profile option)
+  --qos-history {system_default,keep_last,keep_all,unknown}
+                        History of samples setting to publish with (overrides
+                        history value of --qos-profile option, default:
+                        system_default)
+  --qos-reliability {system_default,reliable,best_effort,unknown}
+                        Quality of service reliability setting to publish with
+                        (overrides reliability value of --qos-profile option,
+                        default: system_default)
+  --qos-durability {system_default,transient_local,volatile,unknown}
+                        Quality of service durability setting to publish with
+                        (overrides durability value of --qos-profile option,
+                        default: system_default)
+
+================================================================================ 
+$ ros2 topic type --help
+usage: ros2 topic type [-h] topic_name
+
+Print a topic's type
+
+positional arguments:
+  topic_name  Name of the ROS topic to get type (e.g. '/chatter')
+
+optional arguments:
+  -h, --help  show this help message and exit
+
+================================================================================ 
+$ ros2 topic --help
+usage: ros2 topic [-h] [--include-hidden-topics]
+                  Call `ros2 topic <command> -h` for more detailed usage. ...
+
+Various topic related sub-commands
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --include-hidden-topics
+                        Consider hidden topics as well
+
+Commands:
+  bw     Display bandwidth used by topic
+  delay  Display delay of topic from timestamp in header
+  echo   Output messages from a topic
+  find   Output a list of available topics of a given type
+  hz     Print the average publishing rate to screen
+  info   Print information about a topic
+  list   Output a list of available topics
+  pub    Publish a message to a topic
+  type   Print a topic's type
+
+  Call `ros2 topic <command> -h` for more detailed usage.
+
+================================================================================ 
+$ ros2 wtf hello --help
+usage: ros2 wtf hello [-h] [-t [TOPIC]] [-ep N] [-pp N] [--ttl TTL] [-1]
+
+Check network connectivity between multiple hosts
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -t [TOPIC], --topic [TOPIC]
+                        Name of ROS topic to publish to (default:
+                        '/canyouhearme')
+  -ep N, --emit-period N
+                        Time period to publish/send one message (default:
+                        0.1s)
+  -pp N, --print-period N
+                        Time period to print summary table (default: 1.0s)
+  --ttl TTL             TTL for multicast send (default: None)
+  -1, --once            Publish and multicast send for one emit period then
+                        exit; used in test case.
+
+================================================================================ 
+$ ros2 wtf --help
+usage: ros2 wtf [-h] [--report | --report-failed] [--include-warnings]
+                Call `ros2 wtf <command> -h` for more detailed usage. ...
+
+Use `wtf` as alias to `doctor`
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --report, -r          Print all reports.
+  --report-failed, -rf  Print reports of failed checks only.
+  --include-warnings, -iw
+                        Include warnings as failed checks. Warnings are
+                        ignored by default.
+
+Commands:
+  hello  Check network connectivity between multiple hosts
+
+  Call `ros2 wtf <command> -h` for more detailed usage.
+
+================================================================================ 
+$ ros2 --help
+usage: ros2 [-h] Call `ros2 <command> -h` for more detailed usage. ...
+
+ros2 is an extensible command-line tool for ROS 2.
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Commands:
+  action     Various action related sub-commands
+  bag        Various rosbag related sub-commands
+  component  Various component related sub-commands
+  daemon     Various daemon related sub-commands
+  doctor     Check ROS setup and other potential issues
+  interface  Show information about ROS interfaces
+  launch     Run a launch file
+  lifecycle  Various lifecycle related sub-commands
+  multicast  Various multicast related sub-commands
+  node       Various node related sub-commands
+  param      Various param related sub-commands
+  pkg        Various package related sub-commands
+  run        Run a package specific executable
+  security   Various security related sub-commands
+  service    Various service related sub-commands
+  topic      Various topic related sub-commands
+  wtf        Use `wtf` as alias to `doctor`
+
+  Call `ros2 <command> -h` for more detailed usage.

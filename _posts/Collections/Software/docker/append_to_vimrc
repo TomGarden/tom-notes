@@ -1,0 +1,20 @@
+"这是 tom 手动配置的:/Volumes/Document/synchronization/TomGarden.github.io/_posts/Collections/Software/Editor/VIM个人配置.md                                
+"
+" vim 配置文件使用双引号作为注释声明
+source $VIMRUNTIME/defaults.vim "线引入默认配置
+set number                      " 用于使 vim 显示行号
+set autoindent                  "按下回车键后，下一行的缩进会自动跟上一行的缩进保持一致
+set tabstop=2                   "按下 Tab 键时，Vim 显示的空格数(应该始终和 softtabstop 保持一致)
+set expandtab                   "由于 Tab 键在不同的编辑器缩进不一致，该设置自动将 Tab 转为空格
+set softtabstop=2               "Tab 转为多少个空格(应该始终和 tabstop 保持一致)
+set shiftwidth=2                "在文本上按下>>（增加一级缩进）、<<（取消一级缩进）或者==（取消全部缩进）时，每一级的字符数
+set cursorline                  "光标所在的当前行高亮
+set scrolloff=5                 "垂直滚动时，光标距离顶部/底部的位置（单位：行）
+set sidescrolloff=15            "水平滚动时，光标距离行首或行尾的位置（单位：字符）。该配置在不折行时比较有用
+set laststatus=2                "是否显示状态栏。0 表示不显示，1 表示只在多窗口时显示，2 表示显示
+set showtabline=2               "指定何时显示顶部标签栏 0:永远不显示; 1:至少有两个标签页时显示; 2:永远会显示
+colorscheme desert              "设置 vim 主题配色
+set encoding=utf-8              "设置 vim 内部使用的字符编码
+syntax on                       "语法高亮
+
+

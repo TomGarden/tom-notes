@@ -1,0 +1,26 @@
+##################################################################################################
+# 以覆盖的形式写入 /etc/apt/sources.list
+##################################################################################################
+# 原来的文件在同目录下备份 :/etc/apt/sources.list.tom.bak
+#           参考链接 : https://launchpad.net/ubuntu/+archivemirrors
+#           清华镜像 : https://mirrors.tuna.tsinghua.edu.cn/help/debian —— 需要先安装 apt-transport-https ca-certificates
+# arm 架构需要将 链接末尾的 ubuntu 替换为 ubuntu-ports
+##################################################################################################
+
+
+# 清华镜像 22.04
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ jammy main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ jammy-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ jammy-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ jammy-security main restricted universe multiverse
+
+
+
+# 清华镜像 20.04
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal main restricted universe multiverse
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-updates main restricted universe multiverse
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-backports main restricted universe multiverse
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-security main restricted universe multiverse
+
+
+

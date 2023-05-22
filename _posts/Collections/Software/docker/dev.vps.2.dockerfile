@@ -1,0 +1,132 @@
+
+
+#############################################################################################################
+# 目的 ， 定制一个适合于日常 C++ 开发的 docker 环境
+# 1. 希望将来换设备的时候可以更轻松平顺些，始终可以保持开发环境的一致性和稳定性
+# 2. 使用本地 docker ，假装远程开发，解决当前远程开发环境不稳定的问题
+#
+# 用户操作 dockerfile 必要指南
+# 0. 先选择 FROM 语句取消注释才好后续操作
+# 1. 总体目标不在赘述
+# 2. 通过 dockerfile 构建 docker image
+#     - 本 dockerfile 所在目录下的文件在后续均有用处，需要事先了解
+#     - 进入本文件所在目录
+#     - 开始构建 : 
+#       docker build                                                      \ # docker build 本质上也是在一个容器中运行的
+#              --add-host=host.docker.internal:192.168.65.2               \ # 主机设置了代理的情况下好像也不需要这个值 # 192.168.65.2 的值获取方式 ：创建容器阶段 `--add-host=host.docker.internal:host-gateway` 然后到容器中 `/etc/hosts` 查看
+#              --build-arg=http_proxy=http://host.docker.internal:8889    \ # 设置本地代理
+#              --build-arg=https_proxy=http://host.docker.internal:8889   \ # 设置本地代理
+#              --no-cache=true                                            \ # 构建过程不使用缓存
+#              --tag=debian:tom_c_cxx_dev_env                             \ # 为 image 设置 tag
+#              --file=dev.vps.dockerfile .                                \ # 指定 dockerfile 和上下文目录
+# 3. 构建 image 完成后需要准备好自己的 volume
+#     - docker volume create tom_c_cxx_volume
+#     - tom_c_cxx_volume : 表示 docker volume 的名字
+# 4. 通过 创建好的 docker image 创建一个 docker container
+#    docker run  \
+#       --name=tom_c_cxx_dev_container                                                                          \ # 容器名字
+#       --hostname='cxxEnv'                                                                                     \ # 操作系统部署后系统的名字，后期就无法修改了，如果不设置就是人类无法理解的串码
+#       --interactive --tty                                                                                     \ # 创建后立刻通过伪终端开始与 容器 交互
+#       --add-host=host.docker.internal:host-gateway                                                            \ # 将宿主机 ip 写入 容器 host, 容器中通过 `host.docker.internal` 就可以访问到宿主机 ip ， 方便使用 宿主机 网络
+#       --user='tom:TOM'                                                                                        \ # 默认的，以此身份访问容器
+#       --workdir=/home/tom                                                                                     \ # 默认的，进入容器的此目录
+#       --publish="2222:22"                                                                                     \ # 本地端口 2222 映射到远程 22
+#       --publish="1234:1234"                                                                                   \ # 本地端口 1234 映射到远程 1234 , 用于 clion debug
+#       --mount='source=tom_c_cxx_volume,target=/mount_point/volume,readonly=false'                             \ # 默认的，将 volume `tom_c_cxx_volume` 挂载到 `/volume` 节点，允许读写。
+#       --mount='type=bind,source=/Volumes/VM/docker/host_point/share,target=/mount_point/share,readonly=false' \ # 将本地文件挂载到指定节点，允许读写操作
+#       --mount='type=bind,source=/Volumes/VM/docker/host_point/data,target=/mount_point/data,readonly=false'   \ # 将本地文件挂载到指定节点，允许读写操作
+#       --security-opt="seccomp=unconfined"                                                                     \ # 从而允许 gdb server 的运行
+#       --privileged                                                                                            \ # 完整的容器功能 , 这允许我们修改 /proc/sys/kernel/core_pattern
+#       --cap-add=SYS_PTRACE                                                                                    \ # 允许 GDB 调试 : https://github.com/microsoft/vscode-cpptools/issues/7515
+#       --detach                                                                                                \ # Run container in background and print container ID
+#       debian:tom_c_cxx_dev_env                                                                                \ # 以此 image 为基础 创建 container 
+#    创建完成后使用 [docker exec --interactive --tty --user=tom:TOM --workdir=/home/tom tom_mysql_dev_container /bin/zsh] 打开容器交互窗口 。
+# 4.1 在 C++ 环境 基础上增加一个端口暴露的能力即可
+#     docker run  \                          
+#        --name=tom_nginx_container                                                                              \
+#        --hostname='nginxEnv'                                                                                   \
+#        --interactive --tty                                                                                     \
+#        --add-host=host.docker.internal:host-gateway                                                            \
+#        --user='root:root'                                                                                      \ # 必须 默认 root 用户登录, 否则 依赖 image 中的 脚本物权执行
+#        --workdir=/root                                                                                         \    
+#        --mount='source=tom_c_cxx_volume,target=/mount_point/volume,readonly=false'                             \
+#        --mount='type=bind,source=/Volumes/VM/docker/host_point/share,target=/mount_point/share,readonly=false' \
+#        --mount='type=bind,source=/Volumes/VM/docker/host_point/data,target=/mount_point/data,readonly=false'   \
+#        --security-opt="seccomp=unconfined"                                                                     \
+#        --privileged                                                                                            \
+#        --cap-add=SYS_PTRACE                                                                                    \
+#        --detach                                                                                                \
+#        --publish="80:80"                                                                                       \ # 绑定一个端口
+#        debian:tom_nginx_env_arm64v8                                                                            \ # 具体名称取决于 build 命令
+#     创建完成后可以选定身份登录容器 : [docker exec --interactive --tty --user=tom:TOM --workdir=/home/tom tom_nginx_container zsh]
+# 4.2. 针对 mysql 容器的启动命令暂存 (mysql 已知挂在 volume 到 `/var/lib/mysql` 会导致异常, 本地目录整成.)
+#      docker run  \
+#        --name=tom_mysql_dev_container                                                                           \
+#        --hostname='mysqlEnv'                                                                                    \
+#        --add-host=host.docker.internal:host-gateway                                                             \
+#        --user='tom:TOM' --workdir=/home/tom                                                                     \
+#        --mount='source=tom_c_cxx_volume,target=/mount_point/volume,readonly=false'                              \ # 因为 tom_c_cxx_dev_container 挂载了,所以这里也挂载
+#        --mount='type=bind,source=/Volumes/VM/docker/host_point/share,target=/mount_point/share,readonly=false'  \
+#        --mount='type=bind,source=/Volumes/VM/docker/host_point/data,target=/mount_point/data,readonly=false'    \ # 将本地文件挂载到指定节点，允许读写操作
+#                                  /Volumes/VM/docker/host_point/mysql_data--------------------->>>>>>>>>>>>>>>>>>\ # 挂载前需要先清空 文件夹, 有残存文件会导致容器无法正常 运行
+#        --mount='type=bind,source=/Volumes/VM/docker/host_point/mysql_data,target=/var/lib/mysql,readonly=false' \ # mysql 挂载一个到 /var/lib/mysql , 用于存储 myssql 数据比较稳妥; 只能挂在文件夹,挂在 volume 会导致异常
+#        --security-opt="seccomp=unconfined"                                                                      \
+#        --env MYSQL_ROOT_PASSWORD=root                                                                           \ # 跟安全的密码传递方式还需要再了解下才好
+#        --publish="3306:3306"                                                                                    \  
+#        --publish="33060:33060"                                                                                  \
+#        --detach                                                                                                 \
+#        debian:tom_mysql_dev_env                                                                                 \
+#        --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci                                     \ # 将所有表的默认编码和排序规则更改为使用 UTF-8 ( utf8mb4)
+# 5. 容器首次启动后需要继续配置 我 的个性化内容
+#     - docker exec --interactive --tty --user=root:root tom_c_cxx_dev_container bash
+#        - 修改各个用户的密码,可以登陆任意账户，从而可以修改密码们
+#     - 将备份文件 恢复到 volume : tar --extract --verbose --file='/host_mount_point/volume.bak.tar.xz' --directory='/volume'
+#     - 用户还需要手动安装 mysql ， 配置 shell 相关文件
+# 5. 想要退出 容器交互 直接 exit 即可
+# 6. 想要启动刚刚关闭的容器 
+#     - docker container start --attach --interactive tom_c_cxx_dev_container
+# 7. 手动配置完成后，如有需要，将容器保存为镜像
+#     - 这可以避免那些无法自动配置的动作再手动做一次
+#     - 新镜像创建容器的时候，可以再初始化阶段，修改诸多参数，比如预期挂载目录
+#
+#
+#
+#
+# dockerfile 指令作的事情
+# 0. dockerfile 需要注意 不要轻易使用 单引号 这会导致 变量没有被解析
+# 1. 先换源， 因为可能后操作用到的软件(命令都还没有安装)
+# 2. 下载常用软件
+#
+#
+# 参考内容 : 建议各种参考对照看，并以官方为准(因为有出入)
+# - [官方文档](https://docs.docker.com/engine/reference/builder/)
+# - [Docker从入门到实践 - 杨宝华](https://yeasy.gitbook.io/docker_practice/)
+# - 共同需求的配置参考 :
+#   0. https://www.cnblogs.com/davidhhuan/p/13227139.html
+#   1. https://graueneko.com/archives/64/
+#   2. https://imhuwq.com/2018/12/02/Clion%20使用%20Docker%20作为开发环境/
+#   3. https://www.google.com/search?q=使用+Docker+作为+C%2B%2B+开发环境&oq=使用+Docker+作为+C%2B%2B+开发环境
+#
+#
+#
+# Debian 在 M1 芯片的 mac 电脑上, 需要一个参数 
+#   - 虽然 debian 有 arm64 版本的包  --platform='linux/arm64/v8'
+#   - 但是由于我们要安装不支持 arm64 cpu 的 mysql(oracle 未发布 arm 包) , 所以我们必须使用 amd 或者 intel 的debian包
+#   - 虽然可以兼容运行,但是损失了部分性能
+#   - 后来又尝试了 arm64v8/debian:bullseye , mysql 的 c++ 库无论如何都要自行编译, 此架构编译后完全可用
+# Mysql base Debian 在 M1 芯片 设备上, 
+#   - 已知需要兼容才能运行的 image :
+#       - https://hub.docker.com/_/mysql
+#       - https://hub.docker.com/r/amd64/mysql
+#       - 兼容运行会损失一部分效率, 但是这些 image 是基于 Debian 的 . 我更倾向 .
+#   - 已知可以完全适配的 image :
+#       - https://hub.docker.com/r/arm64v8/mysql/
+#       - 基于 Oracle , 我个人不是很习惯 .
+# Nginx 是基于 Debian 11 的 有 arm64v8 版本
+#   - arm64v8/nginx : https://hub.docker.com/r/arm64v8/nginx
+#############################################################################################################
+
+## 基于现有的自己创建的 image 进行操作
+FROM 0tom0/tom_dev_env:c_cxx_clion_image
+
+USER tom:TOM

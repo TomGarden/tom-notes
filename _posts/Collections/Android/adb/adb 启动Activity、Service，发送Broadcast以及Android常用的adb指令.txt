@@ -1,0 +1,295 @@
+无差别抄录：http://blog.csdn.net/hanfengzqh/article/details/53519571
+
+> 需要提醒注意的是如果在普通用户权限($)下 `Error: unknown command `  记得获取超级权限(#) 
+
+## 一、adb启动Activity:
+
+adb shell am start -n ｛包(package)名｝/｛包名｝.{活动(activity)名称}
+
+如：启动浏览器
+
+adb shell am start -n com.android.browser/com.android.browser.BrowserActivity
+
+## 二、adb关闭Activity:
+
+adb shell am force-stop ｛包(package)名｝
+
+如：关闭浏览器
+
+adb shell am force-stop com.android.browser
+
+## 三、adb启动service：
+adb shell am startservice -n ｛包(package)名｝/｛包名｝.{服务(service)名称}
+如：启动自己应用中一个service
+adb shell am startservice -n com.android.traffic/com.android.traffic.maniservice
+          am startservcie -n com.testin.cn.TestAP/com.testin.cn.TestAP.DenialOfService.TestService
+
+四、adb发送broadcast：
+adb shell am broadcast -a <广播动作>
+如：发送一个网络变化的广播
+adb shell am broadcast -a android.net.conn.CONNECTIVITY_CHANGE
+
+五、adb端口转发：
+adb shell am broadcast -a NotifyServiceStop
+adb forward tcp:12580 tcp:10086
+adb shell am broadcast -a NotifyServiceStart
+
+六、常用adb相关指令及配置方式：
+
+第一部分：
+
+1. ubuntu下配置环境anroid变量：
+
+在终端执行 sudo gedit /etc/profile 打开文本编辑器，在最后追加#set android environment
+
+2. 运行Eclipse，还需要配置JAVA环境变量
+
+#set java environment
+
+JAVA_HOME=/home/loginname/jdk目录名
+
+JRE_HOME=/home/loginname/jdk目录名/jre
+
+export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
+
+export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH
+
+export PATH=/home/loginname/android-sdk-linux_86/tools:$PATH
+
+保存后，重启
+
+3. 加入设备ID标识到当前的android调试环境
+
+在/home/loginname/.android文件中添加，android终端的设备标识ID
+
+4. 更新sdk
+
+【android update sdk】更新sdk
+
+5. 常用命令：
+
+【adb help】获取帮助
+
+【adb get-serialno】获取设备串号
+
+【adb root】获取root权限，对部分手机有用，大部分上市手机已经把这个功能给关闭了。获取root权限还可以通过豌豆夹等第三方工具。
+
+【adb kill-server】杀死adb的server进程。
+
+【adb start-server】启动adb的server进程。
+
+【adb devices】查看建立连接的android终端。
+
+【android list】显示所有android终端
+
+【ddms】启动ddms
+
+【adb remount】重新加载硬盘。
+
+【adb reboot】重新启动终端。
+
+【adb install /path/appname】安装应用程序
+
+【adb uninstall com.android.helloworld】卸载helloworld，系统带的应用不可卸载。
+
+【adb push /sourcepath/filename /destinationpath/filename】从pc端拷贝一个文件到终端
+
+【adb pull /sourcepath/filename /destinationpath/filename】从终端拷贝一个文件到pc端
+
+【adb logcat -v time -s TAGNAME】显示自定义的TAGNAME并显示时间
+
+【adb ppp】通过usb启动ppp
+
+【adb monkey -p /path/appname -v 100】对程序进行强制测试100次
+
+【adb shell】在pc端启动shell命令终端。
+
+以上命令需要pc端的root权限，命令失效时，可以尝试切换工作目录到sdk的tools下，例如：sudo ./adb kill-server，sudo ./adb start-server。
+
+6. shell下命令，可以使用BusyBox工具集：
+
+【am start -n {包名(package)}/{包名}.{活动activity名称}】启动某一个app的activity，配置参考AndroidManifest.xml，例如闹钟：
+ # am start -n com.android.alarmclock/com.android.alarmclock.AlarmClock
+
+【am broadcast -a android.intent.action.ActionName】发送广播消息
+
+【setprop KEY VALUE】设置key的property值位value
+
+【getprop KEY】获取该key的property值
+
+【getevent】获取所有事件
+
+【watchprops】监听property值的变化
+
+【stop SERVER】强行停止某一个服务
+
+【start SERVER】启动某一个服务
+
+【ioctl】控制设备
+
+【dumpsys activity】显示活动栈信息
+
+【top】显示瞬间的进程的资源占用等信息
+
+【free】显示当前进程内存使用情况
+
+【ps】显示进程的自身标识信息
+
+【rm /path/filename】从终端删除一个文件
+
+【mkdir】新建一个目录或者文件
+
+【grep】查找特定内容
+
+【ls】显示当前目录下的文件
+
+【cd】切换当前目录
+
+【chmod】更改文件属性
+
+【cp】拷贝文件
+
+【dd】复制文件
+
+【mv】移动目录文件，或者改名
+
+【cat】查看文件内容
+
+【kill】杀死进程
+
+【ipconfig】查看更改网络接口地址和参数
+
+【ping】检测网络状态
+
+【netstat】查看网络状态
+
+【telnet】登录远程主机
+
+【sqlite3 /path/DATABASENAME.db】打开某一个数据库。之后即可使用select,insert,delete等数据库操作命令
+
+【tcpdump -p -nnn -vvv -s 0 -w /PATH/NAME.pcap port 80 and tcp】网络调试抓包
+
+【gst-launch playbin uri=file:///system/media/audio/bootaudio.mp3】gst多媒体框架，播放音频文件
+
+【alsa_amixer】音频调试命令，可以切换声道，调节音量，切换设备。不同的芯片厂家的参数设置有所不同。
+
+【alsa_aplay -D AndroidPlayback_Speaker_normal  /cache/music/dial/0.wav】通过alsa播放pcm码流。
+
+【alsa_arecord】通过alsa实现录音
+
+【am start -n com.android.music/com.android.music.MediaPlaybackActivity -d /sdcard/bootaudio.mp3】启动android进程播放mp3
+
+【stack --symbols-dir=./out/target/product/NAME/symbols ramdump】查看调用堆栈
+
+【exit】退出shell
+
+通过 adb shell， cd /system/bin，ls可以列表出大部分可用的命令。
+
+7. 部分android手机的VenderID
+
+# 0x0525 NXP芯片
+
+# 0x18D1 Broadcom2457双卡芯片
+
+# 0x2314 GHT Moke
+
+# 0x04E8 AnyCall GT-I5508
+
+# 0x22B8 Moto XT701 XT300
+
+# 0x0BB4 HTC A8180
+
+ 
+
+第二部分：
+
+adb(Android Debug Bridge)是Android 提供的一个通用的调试工具，借助这个工具，我们可以很好的调试开发的程序,adb.exe在你安装的android的sdk开发包tools目录下，
+
+adb使用方法：
+
+adb [-d|-e|-s <serialNumber>] <command>
+
+当你发出一个命令，系统启用Android客户端。客户端并不与模拟器实例相关，所以如果双服务器/设备是运行中的，你需要用-d选项去为应被控制的命令确定目标实例。关于使用这个选项的更多信息，可以查看模拟器/设备实例术语控制命令。
+
+1、安装应用到模拟器：
+
+你可以使用adb从你的开发电脑上复制一个应用程序，并且将其安装在一个模拟器/设备实例。像这样做，使用install命令。这个install命令要求你必须指定你所要安装的.apk文件的路径:
+adb install <path_to_apk>
+为了获取更多的关于怎样创建一个可以安装在模拟器/设备实例上的.apk文件的信息，可参照Android Asset Packaging Tool (aapt).
+要注意的是，如果你正在使用Eclipse IDE并且已经安装过ADT插件，那么就不需要直接使用adb（或者aapt）去安装模拟器/设备上的应用程序。否则，ADT插件代你全权处理应用程序的打包和安装.
+如果要删除某个应用，按下面操作，例如应用为test：
+adb shell
+cd /data/app
+rm test.apk
+
+2、进入设备或模拟器的shell：
+
+adb shell
+通过上面的命令，就可以进入设备或模拟器的shell环境中，在这个Linux Shell中，你可以执行各种Linux 的命令，另外如果只想执行一条shell命令，可以采用以下的方式：
+adb shell [command]
+如：adb shell dmesg会打印出内核的调试信息。
+
+3、发布端口：
+
+可以设置任意的端口号，做为主机 向模拟器或设备的请求端口。如：
+adb forward tcp:5555 tcp:8000
+
+4、从模拟器/设备中拷入或拷出文件：
+
+可以使用adbpull ,push命令将文件复制到一个模拟器/设备实例的数据文件或是从数据文件中复制。install命令只将一个.apk文件复制到一个特定的位置，与其不 同的是，pull和push命令可令你复制任意的目录和文件到一个模拟器/设备实例的任何位置。
+从模拟器或者设备中复制文件或目录，使用(如下命):
+adb pull <remote> <local>
+将文件或目录复制到模拟器或者设备，使用（如下命令）
+adb push <local> <remote>
+在这些命令中，<local>和<remote>分别指通向自己的发展机（本地）和模拟器/设备实例（远程）上的目标文件/目录的路径
+下面是一个例子：
+adb push test.txt /data/dat/test/test.txt、
+
+5、查询模拟器/设备实例：
+
+在发布adb命令之前，有必要知道什么样的模拟器/设备实例与adb服务器是相连的。可以通过使用devices
+命令来得到一系列相关联的模拟器/设备：
+adb devices
+
+作为回应，adb为每个实例都制定了相应的状态信息:
+序列号——由adb创建的一个字符串，这个字符串通过自己的控制端口<type>-<consolePort>唯一地识别一个模拟器/设备实例。
+下面是一个序列号的例子：
+emulator-5554
+实例的连接状态有三种状态:
+offline — 此实例没有与adb相连接或者无法响应.
+device — 此实例正与adb服务器连接。注意这个状态并不能百分之百地表示在运行和操作Android系统，因此这个实例是当系统正在运行的时候与adb连接的。然而，在系统启动之后，就是一个模拟器/设备状态的正常运行状态了.
+每个实例的输出都有如下固定的格式:
+[serialNumber] [state]
+下面是一个展示devices命令和输出的例子 :
+$ adb devices
+List of devices attached
+emulator-5554  device
+emulator-5556  device
+emulator-5558  device
+
+如果当前没有模拟器/设备运行，adb则返回 no device .
+
+6、查看bug报告：
+
+adb bugreport
+
+7、记录无线通讯日志：
+
+一般来说，无线通讯的日志非常多，在运行时没必要去记录，但我们还是可以通过命令，设置记录：
+adb shell
+logcat -b radio
+
+8、获取设备的ID和序列号：
+
+adb get-product
+adb get-serialno
+
+9、访问数据库SQLite3
+
+adb shell
+sqlite3
+
+如要打开已存在数据库：
+
+sqlite3 <路径>/dbname.db
+

@@ -1,0 +1,261 @@
+!SESSION 2018-04-16 08:49:20.086 -----------------------------------------------
+eclipse.buildId=R3.7.6.201711221955
+java.version=1.8.0_152
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
+Framework arguments:  -eclipse.keyring @user.home/Application Data/XMind/secure_storage F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13.xmind
+Command-line arguments:  -os win32 -ws win32 -arch x86 -data ./workspace -eclipse.keyring @user.home/Application Data/XMind/secure_storage F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13.xmind
+
+!ENTRY org.xmind.cathy 1 0 2018-04-16 08:49:25.989
+!MESSAGE Skip unrecognized command line argument: '-eclipse.keyring'
+
+!ENTRY org.xmind.cathy 1 0 2018-04-16 08:49:25.989
+!MESSAGE Skip unrecognized command line argument: '@user.home/Application Data/XMind/secure_storage'
+
+!ENTRY org.xmind.cathy 1 0 2018-04-16 08:49:28.664
+!MESSAGE Path queued to be opened: F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13.xmind
+
+!ENTRY org.xmind.cathy 1 0 2018-04-16 08:49:30.270
+!MESSAGE Ready to open files: [F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13.xmind]
+
+!ENTRY org.xmind.core.command 1 0 2018-04-16 08:49:30.270
+!MESSAGE Malformed URI: F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13.xmind
+
+!ENTRY org.xmind.core.command.remote.lan 2 23333 2018-04-16 08:49:32.104
+!MESSAGE Bonjour installation is not found or damaged.
+!STACK 0
+java.lang.UnsatisfiedLinkError: no jdns_sd in java.library.path
+	at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1867)
+	at java.lang.Runtime.loadLibrary0(Runtime.java:870)
+	at java.lang.System.loadLibrary(System.java:1122)
+	at com.apple.dnssd.AppleDNSSD.<clinit>(DNSSD.java:544)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at com.apple.dnssd.DNSSD.<clinit>(DNSSD.java:477)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+	at org.xmind.core.internal.command.remote.lan.LANDiscoveryServiceAdapter.<init>(LANDiscoveryServiceAdapter.java:43)
+	at org.xmind.core.internal.command.remote.lan.LANDiscoveryServiceFactory.createDomainService(LANDiscoveryServiceFactory.java:39)
+	at org.xmind.core.internal.command.remote.CommandServiceDomainImpl.createDomainService(CommandServiceDomainImpl.java:71)
+	at org.xmind.core.internal.command.remote.CommandServiceDomainImpl.getRemoteCommandServiceDiscoverer(CommandServiceDomainImpl.java:135)
+	at org.xmind.core.internal.sharing.LocalNetworkSharingService.activate(LocalNetworkSharingService.java:357)
+	at org.xmind.ui.internal.sharing.ToggleSharingServiceStatusJob.activate(ToggleSharingServiceStatusJob.java:78)
+	at org.xmind.ui.internal.sharing.ToggleSharingServiceStatusJob.run(ToggleSharingServiceStatusJob.java:49)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-04-16 09:00:25.124
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-04-16 09:01:46.016
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-04-16 09:36:23.590
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-04-16 09:55:37.826
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-04-16 10:17:10.397
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-04-16 10:17:20.513
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-04-16 10:19:43.380
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-04-16 10:24:36.856
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-04-16 10:37:55.142
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-04-16 10:38:18.475
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-04-16 10:39:22.296
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-04-16 11:40:04.335
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-04-16 11:45:30.679
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+!SESSION 2018-04-17 20:30:46.659 -----------------------------------------------
+eclipse.buildId=R3.7.6.201711221955
+java.version=1.8.0_152
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
+Framework arguments:  -eclipse.keyring @user.home/Application Data/XMind/secure_storage F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13.xmind
+Command-line arguments:  -os win32 -ws win32 -arch x86 -data ./workspace -eclipse.keyring @user.home/Application Data/XMind/secure_storage F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13.xmind
+
+!ENTRY org.xmind.cathy 1 0 2018-04-17 20:30:50.947
+!MESSAGE Skip unrecognized command line argument: '-eclipse.keyring'
+
+!ENTRY org.xmind.cathy 1 0 2018-04-17 20:30:50.978
+!MESSAGE Skip unrecognized command line argument: '@user.home/Application Data/XMind/secure_storage'
+
+!ENTRY org.xmind.cathy 1 0 2018-04-17 20:30:53.657
+!MESSAGE Path queued to be opened: F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13.xmind
+
+!ENTRY org.xmind.cathy 1 0 2018-04-17 20:30:55.877
+!MESSAGE Ready to open files: [F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13.xmind]
+
+!ENTRY org.xmind.core.command 1 0 2018-04-17 20:30:55.892
+!MESSAGE Malformed URI: F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13.xmind
+
+!ENTRY org.xmind.ui.seawind 1 0 2018-04-17 20:30:57.460
+!MESSAGE WARNING: Library owner is null in info.json
+!SESSION 2018-05-03 10:25:07.778 -----------------------------------------------
+eclipse.buildId=R3.7.6.201711221955
+java.version=1.8.0_152
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
+Framework arguments:  -eclipse.keyring @user.home/Application Data/XMind/secure_storage F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-5-3[app_run].xmind
+Command-line arguments:  -os win32 -ws win32 -arch x86 -data ./workspace -eclipse.keyring @user.home/Application Data/XMind/secure_storage F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-5-3[app_run].xmind
+
+!ENTRY org.xmind.cathy 1 0 2018-05-03 10:25:09.211
+!MESSAGE Skip unrecognized command line argument: '-eclipse.keyring'
+
+!ENTRY org.xmind.cathy 1 0 2018-05-03 10:25:09.227
+!MESSAGE Skip unrecognized command line argument: '@user.home/Application Data/XMind/secure_storage'
+
+!ENTRY org.xmind.cathy 1 0 2018-05-03 10:25:10.385
+!MESSAGE Path queued to be opened: F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-5-3[app_run].xmind
+
+!ENTRY org.xmind.cathy 1 0 2018-05-03 10:25:11.544
+!MESSAGE Ready to open files: [F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-5-3[app_run].xmind]
+
+!ENTRY org.xmind.core.command 1 0 2018-05-03 10:25:11.544
+!MESSAGE Malformed URI: F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-5-3[app_run].xmind
+
+!ENTRY org.xmind.ui.seawind 1 0 2018-05-03 10:25:12.990
+!MESSAGE WARNING: Library owner is null in info.json
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 10:25:38.811
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 10:58:11.524
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 10:59:36.277
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:00:10.695
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:01:42.251
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:05:18.645
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:06:17.215
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:13:23.159
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:17:35.403
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:17:51.565
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:20:39.193
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:21:25.353
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:22:34.267
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:22:38.503
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:22:41.561
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:22:45.985
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:22:47.867
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:23:29.383
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:25:13.384
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:28:45.132
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:29:39.098
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:30:07.004
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:31:44.816
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:32:24.255
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-03 11:32:51.989
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...
+!SESSION 2018-05-14 16:08:05.882 -----------------------------------------------
+eclipse.buildId=R3.7.6.201711221955
+java.version=1.8.0_152
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
+Framework arguments:  -eclipse.keyring @user.home/Application Data/XMind/secure_storage F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13[DexClassLoader].xmind
+Command-line arguments:  -os win32 -ws win32 -arch x86 -data ./workspace -eclipse.keyring @user.home/Application Data/XMind/secure_storage F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13[DexClassLoader].xmind
+
+!ENTRY org.xmind.cathy 1 0 2018-05-14 16:08:07.401
+!MESSAGE Skip unrecognized command line argument: '-eclipse.keyring'
+
+!ENTRY org.xmind.cathy 1 0 2018-05-14 16:08:07.402
+!MESSAGE Skip unrecognized command line argument: '@user.home/Application Data/XMind/secure_storage'
+
+!ENTRY org.xmind.cathy 1 0 2018-05-14 16:08:08.648
+!MESSAGE Path queued to be opened: F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13[DexClassLoader].xmind
+
+!ENTRY org.xmind.cathy 1 0 2018-05-14 16:08:09.976
+!MESSAGE Ready to open files: [F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13[DexClassLoader].xmind]
+
+!ENTRY org.xmind.core.command 1 0 2018-05-14 16:08:09.984
+!MESSAGE Malformed URI: F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13[DexClassLoader].xmind
+
+!ENTRY org.xmind.ui.seawind 1 0 2018-05-14 16:08:10.979
+!MESSAGE WARNING: Library owner is null in info.json
+!SESSION 2018-05-14 20:50:00.717 -----------------------------------------------
+eclipse.buildId=R3.7.6.201711221955
+java.version=1.8.0_152
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=zh_CN
+Framework arguments:  -eclipse.keyring @user.home/Application Data/XMind/secure_storage F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13[DexClassLoader].xmind
+Command-line arguments:  -os win32 -ws win32 -arch x86 -data ./workspace -eclipse.keyring @user.home/Application Data/XMind/secure_storage F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13[DexClassLoader].xmind
+
+!ENTRY org.xmind.cathy 1 0 2018-05-14 20:50:04.416
+!MESSAGE Skip unrecognized command line argument: '-eclipse.keyring'
+
+!ENTRY org.xmind.cathy 1 0 2018-05-14 20:50:04.432
+!MESSAGE Skip unrecognized command line argument: '@user.home/Application Data/XMind/secure_storage'
+
+!ENTRY org.xmind.cathy 1 0 2018-05-14 20:50:07.228
+!MESSAGE Path queued to be opened: F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13[DexClassLoader].xmind
+
+!ENTRY org.xmind.cathy 1 0 2018-05-14 20:50:09.125
+!MESSAGE Ready to open files: [F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13[DexClassLoader].xmind]
+
+!ENTRY org.xmind.core.command 1 0 2018-05-14 20:50:09.138
+!MESSAGE Malformed URI: F:\synchronization\TomGarden.github.io\Collections\Android\Android系统源代码情景分析\方法小计\调用栈\2018-4-13[DexClassLoader].xmind
+
+!ENTRY org.xmind.ui.seawind 1 0 2018-05-14 20:50:18.887
+!MESSAGE WARNING: Library owner is null in info.json
+
+!ENTRY org.xmind.ui.mindmap 4 4 2018-05-14 20:58:26.553
+!MESSAGE [save] start...[save] add state...[save] clean...[save] doSave start...[save] doSaveWorkbookToTempStorage start...[save] doSaveWorkbookToTempStorage over...[save] doSaveWorkbookToURIFromSource start...[save] new file...[save] serialize start...[save] new FileOutputStream...[save] setOutputStream...[save] serialize success...[save] doSaveWorkbookToURIFromSource over...[save] doSave over...[save] success...over...

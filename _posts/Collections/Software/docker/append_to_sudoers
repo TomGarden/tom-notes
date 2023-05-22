@@ -1,0 +1,17 @@
+
+
+
+########################################
+# 以追加的形式写入 /etc/sudoers
+# 允许用户使用 sudo 的时候不用密码
+########################################
+
+# 允许用户使用 sudo 不需要输入密码
+# USER_NAME	ALL=(ALL:ALL) NOPASSWD:ALL    
+
+# 用户使用 sudo 需要输入密码 , 要修改此条目记得为用户修改好密码
+# 修改密码可以 : docker exec --interactive --tty --user=root:root tom_c_cxx_dev_container bash 
+USER_NAME	ALL=(ALL:ALL) ALL
+
+
+

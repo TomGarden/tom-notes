@@ -94,7 +94,7 @@ When my generated `core` file successed , the `core` file path is `crash_demo.ru
 ### Solution update 2
 
 
-再次遇到此问题 ， 我们向作两件事 
+再次遇到此问题 ， 我们想做两件事 
 1.  搞清楚 core dump 文件生成的细节
 2.  core dump 文件如何使用
 
@@ -107,12 +107,13 @@ core manual 中设计的点很多 ， 不同的情况可能遇到不同的问题
 
 要生成 core dump 有几个前提条件 :
 - 对于 core dump 文件的大小 ，有系统层面的限制 ， 可以通过 命令  ulimit 查看和修改
-  - `ulimit -a` 查看   /   `ulimit -c unlimited` 修改
+  - `ulimit -a` 查看   ;   `ulimit -c unlimited` 修改
 - 关于 修改 `/proc/sys/kernel/core_pattern` , 
   - 默认的内容一般为 `core` ， 除非被修改过
   - 如果文件的首个字符是 `|` 意味通过管道后进一步执行后续命令 ， 细节需要再细读文档，不再展开。
   - 我们修改为 `core_%e_%p_%t` -> `core_可执行文件名_pid_时间戳`
   - 修改命令为 : `sudo bash -c 'echo core_%e_%p_%t > /proc/sys/kernel/core_pattern'`
+    - 如果修改为 `/tmp/core_%e_%p_%t` , core dump 会放到 `/tmp` 目录下 
 
 
 再次执行异常程序后可以使用 find 命令查找 core 文件位置了

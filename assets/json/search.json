@@ -1,0 +1,12 @@
+---
+layout: null
+---
+[{% for post in site.posts %}
+    {
+        "title":"{{post.title}}",
+        "url":"{{site.url}}{{site.baseurl}}{{post.url}}",
+        "path":"{{post.path}}",
+        "date":"{{post.date|date_to_string}}"
+    }{% if forloop.last == false %},{% endif %}
+{% endfor %}
+]

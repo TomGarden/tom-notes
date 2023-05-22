@@ -1,0 +1,8 @@
+
+_site
+.sass-cache
+.jekyll-metadata
+tom.gitignore
+BE_YOURSELF
+.history
+.DS_Store

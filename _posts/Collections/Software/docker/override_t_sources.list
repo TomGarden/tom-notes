@@ -1,0 +1,23 @@
+##################################################################################################
+# 以覆盖的形式写入 /etc/apt/sources.list
+##################################################################################################
+# 原来的文件在同目录下备份 :/etc/apt/sources.list.tom.bak
+# 配置信息参考两个链接 : https://www.debian.org/mirror/list.zh-cn.html
+#           清华镜像 : https://mirrors.tuna.tsinghua.edu.cn/help/debian —— 如果证书有问题可以先用 http 
+#       南京大学镜像  : https://mirrors.nju.edu.cn/help/debian
+##################################################################################################
+
+
+# 清华镜像
+deb http://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
+deb http://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free
+deb http://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free
+deb http://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free
+
+
+
+# 南京大学镜像
+# deb https://mirror.nju.edu.cn/debian/ bullseye main contrib non-free
+# deb https://mirror.nju.edu.cn/debian/ bullseye-updates main contrib non-free
+# deb https://mirror.nju.edu.cn/debian/ bullseye-backports main contrib non-free
+# deb https://mirror.nju.edu.cn/debian-security bullseye-security main contrib non-free

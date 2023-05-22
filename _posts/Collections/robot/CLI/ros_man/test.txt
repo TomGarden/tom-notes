@@ -1,0 +1,529 @@
+print_cmd_info()
+标识变更 : Commands:
+action
+Call
+print_cmd_info()
+标识变更 : Commands:
+info
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 action info
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                     servers
+list
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 action list
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -c, --count-actions  Only display the number of actions discovered
+send_goal
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 action send_goal
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -f, --feedback  Echo feedback messages for the goal
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2 action
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   Call `ros2 action <command> -h` for more detailed usage.
+bag
+Call
+print_cmd_info()
+标识变更 : Commands:
+info
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 bag info
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         yaml file exists. Defaults to "sqlite3"
+play
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 bag play
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         "old_topic1:=new_topic1 old_topic2:=new_topic2 etc."
+record
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 bag record
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         profile for specific topics.
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2 bag
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   Call `ros2 bag <command> -h` for more detailed usage.
+component
+Call
+print_cmd_info()
+标识变更 : Commands:
+list
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 component list
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   --containers-only     List found containers nodes only
+load
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 component load
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -q, --quiet           Only print component unique IDs and names
+standalone
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 component standalone
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         Name of the standalone container node to be run
+types
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 component types
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   --no-daemon           Do not spawn nor use an already running daemon
+unload
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 component unload
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -q, --quiet           Only print component unique IDs
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2 component
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   Call `ros2 component <command> -h` for more detailed usage.
+daemon
+Call
+print_cmd_info()
+标识变更 : Commands:
+start
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 daemon start
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   --debug, -d  Print debug messages
+status
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 daemon status
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -h, --help  show this help message and exit
+stop
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 daemon stop
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -h, --help  show this help message and exit
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2 daemon
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   Call `ros2 daemon <command> -h` for more detailed usage.
+doctor
+Call
+print_cmd_info()
+标识变更 : Commands:
+hello
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 doctor hello
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         exit; used in test case.
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2 doctor
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   Call `ros2 doctor <command> -h` for more detailed usage.
+interface
+Call
+print_cmd_info()
+标识变更 : Commands:
+list
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 interface list
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -a, --only-actions  Print out only the action types
+package
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 interface package
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -h, --help    show this help message and exit
+packages
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 interface packages
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -a, --only-actions  Only list packages that generate actions
+proto
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 interface proto
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   --no-quotes  if true output has no outer quotes.
+show
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 interface show
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -h, --help  show this help message and exit
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2 interface
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   Call `ros2 interface <command> -h` for more detailed usage.
+launch
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 launch
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         OVERRIDE_LAUNCH_PROCESS_OUTPUT envvar.
+lifecycle
+Call
+print_cmd_info()
+标识变更 : Commands:
+get
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 lifecycle get
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         Consider hidden nodes as well
+list
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 lifecycle list
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -a, --all             Display all existing transitions
+nodes
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 lifecycle nodes
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -c, --count-nodes     Only display the number of nodes discovered
+set
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 lifecycle set
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         Consider hidden nodes as well
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2 lifecycle
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   Call `ros2 lifecycle <command> -h` for more detailed usage.
+multicast
+Call
+print_cmd_info()
+标识变更 : Commands:
+receive
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 multicast receive
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -h, --help  show this help message and exit
+send
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 multicast send
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   --ttl TTL   The multicast TTL
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2 multicast
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   Call `ros2 multicast <command> -h` for more detailed usage.
+node
+Call
+print_cmd_info()
+标识变更 : Commands:
+info
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 node info
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   --include-hidden      Display hidden topics, services, and actions as well
+list
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 node list
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -c, --count-nodes     Only display the number of nodes discovered
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2 node
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   Call `ros2 node <command> -h` for more detailed usage.
+param
+Call
+print_cmd_info()
+标识变更 : Commands:
+delete
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 param delete
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         Consider hidden nodes as well
+describe
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 param describe
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         Consider hidden nodes as well
+dump
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 param dump
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         file.
+get
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 param get
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   --hide-type           Hide the type information
+list
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 param list
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         Only list parameters with the provided prefixes
+load
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 param load
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         node
+set
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 param set
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         Consider hidden nodes as well
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2 param
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   Call `ros2 param <command> -h` for more detailed usage.
+pkg
+Call
+print_cmd_info()
+标识变更 : Commands:
+create
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 pkg create
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         name of the empty library
+executables
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 pkg executables
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   --full-path   Show full path of each executable
+list
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 pkg list
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -h, --help  show this help message and exit
+prefix
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 pkg prefix
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   --share       Show share directory for the package
+xml
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 pkg xml
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -t TAG, --tag TAG  The XML tag to output (e.g. 'version')
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2 pkg
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   Call `ros2 pkg <command> -h` for more detailed usage.
+run
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 run
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                    (e.g. --prefix 'gdb -ex run --args').
+security
+Call
+print_cmd_info()
+标识变更 : Commands:
+create_key
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 security create_key
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -h, --help  show this help message and exit
+create_keystore
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 security create_keystore
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -h, --help  show this help message and exit
+create_permission
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 security create_permission
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -h, --help        show this help message and exit
+generate_artifacts
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 security generate_artifacts
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         list of policy xml file paths
+generate_policy
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 security generate_policy
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   --no-daemon           Do not spawn nor use an already running daemon
+list_keys
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 security list_keys
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -h, --help  show this help message and exit
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2 security
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   Call `ros2 security <command> -h` for more detailed usage.
+service
+Call
+print_cmd_info()
+标识变更 : Commands:
+call
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 service call
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -r N, --rate N  Repeat the call at a specific rate in Hz
+find
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 service find
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         Consider hidden services as well
+list
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 service list
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -c, --count-services  Only display the number of services discovered
+type
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 service type
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -h, --help    show this help message and exit
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2 service
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   Call `ros2 service <command> -h` for more detailed usage.
+topic
+Call
+print_cmd_info()
+标识变更 : Commands:
+bw
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 topic bw
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         rate (default: 100)
+delay
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 topic delay
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         string to (default: 10000)
+echo
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 topic echo
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   --no-str              Don't print string fields of messages
+find
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 topic find
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         Consider hidden topics as well
+hz
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 topic hz
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         when clock is not published during simulation
+info
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 topic info
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                  and subscribers to this topic
+list
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 topic list
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         Consider hidden topics as well
+pub
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 topic pub
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         default: system_default)
+type
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 topic type
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   -h, --help  show this help message and exit
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2 topic
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   Call `ros2 topic <command> -h` for more detailed usage.
+wtf
+Call
+print_cmd_info()
+标识变更 : Commands:
+hello
+Call
+print_cmd_info()
+>>>>>>>>>>>>>>>> ros2 wtf hello
+>>>>>>>>>>>>>>>> 
+处理后续指令 :                         exit; used in test case.
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2 wtf
+>>>>>>>>>>>>>>>> 
+处理后续指令 :   Call `ros2 wtf <command> -h` for more detailed usage.
+Call
+Call
+break---11111111111111
+>>>>>>>>>>>>>>>> ros2
+>>>>>>>>>>>>>>>> 

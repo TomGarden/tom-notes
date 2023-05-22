@@ -1,0 +1,2 @@
+-  `aosp/cts` 目录视为测试代码目录
+-  `aosp/art/tools` 目录视为测试代码目录

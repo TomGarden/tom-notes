@@ -1,0 +1,26 @@
+##################################################################################################
+# 以覆盖的形式写入 /etc/apt/sources.list
+##################################################################################################
+# 原来的文件在同目录下备份 :/etc/apt/sources.list.tom.bak
+# 配置信息参考两个链接 : https://www.debian.org/mirror/list.zh-cn.html
+#           清华镜像 : https://mirrors.tuna.tsinghua.edu.cn/help/debian —— 如果证书有问题可以先用 http 
+#       南京大学镜像  : https://mirrors.nju.edu.cn/help/debian
+##################################################################################################
+
+
+# 清华镜像
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb http://mirrors.163.com/debian/ jessie main non-free contrib
+deb http://mirrors.163.com/debian-archive/debian/ jessie-backports main non-free contrib
+# deb-src http://mirrors.163.com/debian/ jessie main non-free contrib
+# deb-src http://mirrors.163.com/debian-archive/debian/ jessie-backports main non-free contrib
+deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib
+# deb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib
+
+
+
+# 南京大学镜像
+# deb https://mirror.nju.edu.cn/debian/ bullseye main contrib non-free
+# deb https://mirror.nju.edu.cn/debian/ bullseye-updates main contrib non-free
+# deb https://mirror.nju.edu.cn/debian/ bullseye-backports main contrib non-free
+# deb https://mirror.nju.edu.cn/debian-security bullseye-security main contrib non-free

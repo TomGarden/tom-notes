@@ -3,4 +3,4 @@
 - 我的源码备份 :  https://github.com/TomGarden/TomGitActions
 - 我的实际应用 :  https://github.com/TomGarden/tom-notes/issues
 
-- 此操作抄自   :  https://github.com/Sep0lkit/git-issues-blog
+- 此操作抄自   :  https://github.com/Sep0lkit/git-issues-blog

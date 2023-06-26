@@ -1,0 +1,29 @@
+##################################################################################################
+# 以覆盖的形式写入 /etc/apt/sources.list
+##################################################################################################
+# 原来的文件在同目录下备份 :/etc/apt/sources.list.tom.bak
+# 配置信息参考两个链接 : https://www.debian.org/mirror/list.zh-cn.html
+#           清华镜像 : https://mirrors.tuna.tsinghua.edu.cn/help/debian —— 如果证书有问题可以先用 http 
+#       南京大学镜像  : https://mirrors.nju.edu.cn/help/debian
+##################################################################################################
+
+
+# 清华镜像
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ trusty main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ trusty main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ trusty-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ trusty-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ trusty-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ trusty-backports main restricted universe multiverse
+
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ trusty-security main restricted universe multiverse
+# # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ trusty-security main restricted universe multiverse
+
+deb http://ports.ubuntu.com/ubuntu-ports/ trusty-security main restricted universe multiverse
+# deb-src http://ports.ubuntu.com/ubuntu-ports/ trusty-security main restricted universe multiverse
+
+# 预发布软件源，不建议启用
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ trusty-proposed main restricted universe multiverse
+# # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ trusty-proposed main restricted universe multiverse

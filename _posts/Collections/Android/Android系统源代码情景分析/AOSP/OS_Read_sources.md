@@ -14,13 +14,13 @@
 
 
 
-__未提前编译 AOSP 源码同步完成后支架操作 idegen 生成 android.ipr 尝试导入源码 , 点击无法跳转__
+__未提前编译 AOSP 源码同步完成后直接操作 idegen 生成 android.ipr 尝试导入源码 , 点击无法跳转__
 
 1. 先make development/tools/idegen/子目录：
-    - `mmm development/tools/idegen/`
+    - `mmm development/tools/idegen/` :  `- 构建提供的目录中的所有模块及其依赖项。`
         - 实际上我是分两步的 :
         - `cd development/tools/idegen/`
-        - `mmm`
+        - `mm`  : `- 构建当前目录中的所有模块及其依赖项。`
     - 这个会得到idegen.jar，这个jar在第二步中要用到，如果没有这一步，第二步会提示找不到这个jar。
 
 2. 生成项目文件：
@@ -119,6 +119,11 @@ idea.case.sensitive.fs=true
 
                 <!--原来的content 内容 删除了 sourceFolder 节点中的 type 属性-->
                 <sourceFolder url="file://$MODULE_DIR$/art/test/004-JniTest/src"  />
+
+                <!-- 编译输出目录内容被注释掉 ， 测试代码被注释掉 -->
+                <!-- <sourceFolder url="file://$MODULE_DIR$/./ndk/tests/abcc/src" isTestSource="true"/> -->
+                <!-- <sourceFolder url="file://$MODULE_DIR$/./out/....../path/...." isTestSource="false"/> -->
+
 
                 <!--content 中的其他节点省略-->
             </content>

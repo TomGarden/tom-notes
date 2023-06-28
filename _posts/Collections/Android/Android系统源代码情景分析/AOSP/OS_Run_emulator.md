@@ -2,7 +2,7 @@
 
 下载 AOSP 编译完成后直接执行 emulator 即可运行刚刚编译好的镜像
 
-在 aost/out 目录中可以找到启动模拟器所需要的景象文件 , 要启动这个模拟器 , 在编译完成后直接执行
+在 aost/out 目录中可以找到启动模拟器所需要的镜像文件 , 要启动这个模拟器 , 在编译完成后直接执行
  `emulator` 即可
 
 但是当设备重启后再想运行这个模拟器 :
@@ -24,6 +24,20 @@
 
 ## 0x03. 修改 emulator 参数
 修改屏幕尺寸 , 参照 `~/.android/avd` 文件中的配置文件 confit.ini 进行修改和验证即可
+
+
+## 0x04. 使用编译结果启动虚拟机
+```
+10:51:14 tom@tom-pc android-6.0.0_r1 → which emulator
+/media/tom/vm/AOSP/android-6.0.0_r1/prebuilts/android-emulator/linux-x86_64/emulator
+10:51:14 tom@tom-pc android-6.0.0_r1 → pwd
+/media/tom/vm/AOSP/android-6.0.0_r1
+
+emulator    \
+                    -system      ./out/target/product/hammerhead/system.img  \
+                    -ramdisk  ./out/target/product/hammerhead/ramdisk.img  \
+                    -data         ./out/target/product/hammerhead/userdata.img
+```
 
 
 

@@ -133,6 +133,7 @@ idea.case.sensitive.fs=true
         </component>
         </module>
         ```
+    - 被手动注释的节点 在 `Android Studio Flamingo | 2022.2.1 Patch 2` 重启的时候会被自动删除
 
 至此我们已经可以通过 idea 正常读取 AOSP 了
 

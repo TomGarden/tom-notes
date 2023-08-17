@@ -7,7 +7,7 @@
 # tom 手动设置的内容
 # 这个路径具体跟，容器配置的节点和圈中文件目录结构相关
 #########################################################################
-source /volume/_beyourself/_global_config_file/_tom_shell_profile
+source /mount_point/data/_beyourself/_global_config_file/_tom_shell_profile
 
 
 

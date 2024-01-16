@@ -10,12 +10,12 @@
 它会将消息和可运行对象传递到该 Looper 的消息队列，并在该 Looper 的线程上执行它们。
 
 Handler 有两个主要的用途：
-1.  将消息放到 message queue，并在想来的某个事件执行该消息；
+1.  将消息放到 message queue，并在将来的某个时间执行该消息；
 2.  在另一个线程中执行动作。
 
 通过这些方法将 message 安排到日程中：`post(Runnable)`, `postAtTime(Runnable, long)`, `postDelayed(Runnable, Object, long)`, `sendEmptyMessage(int)`, `sendMessage(Message)`, `sendMessageAtTime(Message, long)`, 和 `sendMessageDelayed(Message, long)`。
 post 方法允许你将 Runable 对象排到队列中，当 message queue 接收到之后会调用它；
-sendMessage 允许你将 Message 对象排到队列中，Message 对象中包含一个 bundle 数据包，Handler 的 handleMessage(Message) 方法将会处理这些数据(需要你实现 Hamdler 的一个子类)。
+sendMessage 允许你将 Message 对象排到队列中，Message 对象中包含一个 bundle 数据包，Handler 的 handleMessage(Message) 方法将会处理这些数据(需要你实现 Handler 的一个子类)。
 
 当传递一个消息到 Handler 的时候，只要 message queue 已经被准备停当，你能选择立刻执行这个消息，或者指定延时执行。
 后者允许你实现超时，计时，以及其他基于时间的行为。
@@ -82,7 +82,7 @@ class ThreadOne: Thread() {
                                在 looper 运行之前便有了机会创建与 Looper 关联的 Handler ; 
                                记得要退出 looper.quiteXxx() 
                                
-                               此函数的实现决定了 , 与当前线程绑定到 Looper 只能有一个 ; 
+                               此函数的实现决定了 , 与当前线程绑定的 Looper 只能有一个 ; 
                                线程与 Looper 的绑定是通过 ThreadLocal<Looper> 完成的 ; 
 
                                prepare 会创建一个 Looper() 对象 , Looper 对象的创建 会在内部持有一个 MessageQueue 
@@ -237,7 +237,7 @@ IBinder 中关键的 API 是 transact() 方法(和 Binder.onTransact() 相对应
 系统中每一个进程都持有一个事务线程池。
 这些线程被用于调度所有来自其它进程的 IPCs 。
 例如，当一个 IPC 从进程 A 发送到进程 B，调用线程被阻塞在方法 transact() ,因为它将事务发送到进程 B 了。
-接下来进程 B 中的线程池总可用的线程接收到到来的事务，并且调用 Binder.onTransact() 方法处理目标对象，然后通过 Parcel 将处理结果返回。
+接下来进程 B 中的线程池从可用的线程接收到到来的事务，并且调用 Binder.onTransact() 方法处理目标对象，然后通过 Parcel 将处理结果返回。
 进程 A 从 transact() 方法的返回值中接收到结果，进程 A 的阻塞状态被解除，进程 A 继续执行。
 事实上，在其他进程中使用了额外的线程做了某些操作，而非在当前进程中。
 
@@ -260,10 +260,10 @@ Binder 体系也支持跨进程递归。
 大多数开发者不用直接实现这个类 , 可以通过 [aidl](https://developer.android.com/guide/components/aidl?hl=zh-cn) 描述想要的接口 , 进而生成合适的 Binder 子类 . 
 你可以直接继承 Binder 实现自己的 [RPC](https://zh.wikipedia.org/wiki/遠程過程調用) 协议 , 或者可以直接使用 Binder 的实例 作为可以跨进程共享的 令牌 . 
 
-本类只是基本的 IPC 原语 ; 它不影响应用的生命周期 , 只有创建 Binder 的进程在持续运行的时候 Binder 才是有效的 . 
+本类只是基本的 Interprocess Communication(IPC) 原语 ; 它不影响应用的生命周期 , 只有创建 Binder 的进程在持续运行的时候 Binder 才是有效的 . 
 要正确使用它，你必须在顶级应用程序组件（Service、Activity或 ContentProvider）的上下文中让系统知道你的进程应该保持运行 .
 
-你必须考虑你的进程可以回消失的情况 , 因此 , 需要你在进程重启后重新创建新的 Binder 并且重新绑定到进程上 . 
+你必须考虑你的进程可能回消失的情况 , 因此 , 需要你在进程重启后重新创建新的 Binder 并且重新绑定到进程上 . 
 例如 , 如果你正在使用一个 Actiity , 你的 Activity 进程可能在任何时间被杀死 , 如果稍候 Activity 重启了 , 你需要重新创建新的 Binder 并把它放到正确的位置 ;
 你的进程可能因为其他的原因被启动(例如 接收到了 Broadcast)这将不会调用 re-create Activity , 因此需要执行创建 Binder 的代码 . 
 

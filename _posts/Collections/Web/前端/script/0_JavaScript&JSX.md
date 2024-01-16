@@ -36,3 +36,12 @@ function VideoList({ videos, emptyHeading }) {
 ```
 - [官方 React 网站](https://react.dev/)
    - [中文 React 网站](https://zh-hans.react.dev/)
+
+
+
+## JSX
+1. https://www.typescriptlang.org/docs/handbook/jsx.html
+2. https://facebook.github.io/jsx/
+3. https://legacy.reactjs.org/docs/introducing-jsx.html
+
+JSX是一种可嵌入的类似 XML 的语法。它旨在被转换为有效的 JavaScript，尽管该转换的语义是特定于实现的。

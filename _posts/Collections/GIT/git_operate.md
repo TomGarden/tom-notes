@@ -395,3 +395,15 @@ git commite --message"OVER"
 
 
 
+
+## 将文件从历史中移除
+将历史提交中的某些文件彻底移除 , 就像他们从来没有存在过一样
+- `git filter-repo --invert-paths --path .gradle --force`
+
+
+
+## 提交 MregeRequest ; 针对 gitlab 
+
+git push -o merge_request.create -o merge_request.target=main \
+         -o merge_request.title="写下此次合并的内容概述"
+https://guoxudong.io/post/gitlab-push-create-mr/

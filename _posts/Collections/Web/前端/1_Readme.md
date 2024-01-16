@@ -58,5 +58,9 @@ HTML / CSS / JavaScript 共同构成前端开发的基本内容
 
 
 
+## 前端库用量趋势 : https://npmtrends.com/
+- 二维码生成库 : https://github.com/davidshimjs/qrcodejs
+
+
 
 

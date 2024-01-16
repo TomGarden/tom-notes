@@ -23,3 +23,8 @@ logcat -v thread | grep --color=auto PID号
 
 3. **已验证** : `adb logcat --pid=7319 --format color --dividers --file=`
 4. **已验证 , 控制台和文件都会记录** : `adb logcat --pid=32548  --format color --dividers | tee /Users/tom/Desktop/log.log`
+5. 根据包名查找 ID 然后展示日志 : https://stackoverflow.com/a/48004086/7707781
+    ```
+    adb logcat --pid=`adb shell pidof -s com.example.app`
+    adb logcat --pid=$(adb shell pidof -s io.metamask)
+    ```

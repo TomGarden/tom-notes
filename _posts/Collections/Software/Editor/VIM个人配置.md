@@ -3,8 +3,24 @@
 
 
 ## 参考内容
+0. [在线阅读](https://github.com/yianwillis/vimcdoc?tab=readme-ov-file)
 1. [官网](https://www.vim.org/) -- [翻译文档](https://www.vim.org/translations.php) -- 下载即可
 2. [阮一峰的笔记](https://www.ruanyifeng.com/blog/2018/09/vimrc.html)
+
+
+## 配置文件概览
+[在线阅读](https://github.com/yianwillis/vimcdoc?tab=readme-ov-file) , 关于配置文件的设置引导在 : usr_05.txt(设置选项)
+
+
+
+
+
+## 插件相关
+
+插件配合 插件 管理器 使用 会更方便 , 插件管理器有许多 , 暂时我们选定 [vim-plug](https://github.com/junegunn/vim-plug)
+
+
+
 
 ## 配置预备
 跳读文档 , 可以知道 , vim 在用户目录有一个配置文件 `~/.vimrc` , 如果没有可以自己创建 . 

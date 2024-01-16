@@ -211,18 +211,3 @@ Execution failed for task ':lib_system_bar:publishGprPublicationToLib_system_bar
    > Could not PUT 'https://maven.pkg.github.com/TomGarden/lib_system_bar/io/github/tomgarden/lib_system_bar/0.0.1/lib_system_bar-0.0.1.aar'. Received status code 409 from server: Conflict
 ```
 
-
-## 0x05. (这个步骤无结果 , 可以不读)上传到 Maven Central
-
-我们按照 https://juejin.im/post/5c3bddeff265da616501c56b 的操作指导(没有上传公钥) ,
-完成了操作 , 并且上传成功了 , 但是在 maven center 搜索不到自己上传的 lib 文件
-还需要跟进
-
-看看等等怎么样 :
-- jira 问题地址 : https://issues.sonatype.org/browse/OSSRH-59251
-- 仓库地址 : https://oss.sonatype.org/#stagingRepositories
-
-__不想等了 , 本次就采用 GitHub Packages__
-
-### 5.1. 参考内容
-1. https://www.jianshu.com/p/67d81977b027

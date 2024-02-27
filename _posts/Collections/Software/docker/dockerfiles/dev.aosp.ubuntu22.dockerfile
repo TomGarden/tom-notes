@@ -140,7 +140,7 @@
 #############################################################################################################
 
 # FROM arm64v8/debian:jessie-slim
-FROM amd64/ubuntu:14.04
+FROM amd64/ubuntu:24.04
 # FROM arm64v8/ubuntu:16.04
 
 # 定义几个变量方便后续作出修改
@@ -161,8 +161,7 @@ ARG clionDependent=""
 ARG commonlyUsedSoftware="apt-transport-https ca-certificates locales zsh sudo \
     git inetutils-ping less man-db  tmux dialog sysv-rc-conf \
     htop cmake tree unzip clang-format \
-    wget curl net-tools openssl openssh-server vim gdb pkg-config build-essential doxygen \
-    libcurl4-openssl-dev clangd-13"
+    wget curl net-tools openssl openssh-server vim gdb pkg-config build-essential "
 # ARG commonlyUsedSoftware="curl vim git zsh sudo locales"
 ## Clion docker 远程开发需要的软件 https://www.jetbrains.com/help/clion/clion-toolchains-in-docker.html
 ARG clionRemoteSoft="tzdata \
@@ -177,8 +176,8 @@ ARG imgContextDir=/_docker_context_dir
 COPY ./ $imgContextDir
 
 ## 先换源
-RUN cp /etc/apt/sources.list /etc/apt/sources.list.tom.bak
-RUN cat $imgContextDir/override_t_sources_ubuntu_14.04.list > /etc/apt/sources.list
+# RUN cp /etc/apt/sources.list /etc/apt/sources.list.tom.bak
+# RUN cat $imgContextDir/override_t_sources_ubuntu_14.04.list > /etc/apt/sources.list
 # 安装常用软件
 RUN apt update
 RUN apt upgrade -y

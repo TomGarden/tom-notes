@@ -1,4 +1,15 @@
 
+用着用着发现当需要集中大量上传不同 组件的时候 , 压力就很大了 , 
+1. 我们必须 在 Sonatype 提出申请 , 并等待批准
+2. 上传后 , 需要 close / release 操作 . 
+
+这时候 , 我查到了 jitpack
+- 目前看它可以解决上述问题
+- jitpack 存在的问题在于 , 一定概率的 [build 失败](https://github.com/jitpack/jitpack.io/issues/3733)
+    - 在确定 , 自己的代码没问题的情况下 , 编译失败, 删除并重新编译即可
+
+
+
 ## 0x01. 目的 , 将 Android lib 上传到 Maven Central
 
 

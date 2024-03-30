@@ -1,4 +1,19 @@
 
+## 0x00. 将 Android Lib 推送到 jitpack
+
+> JitPack 工作逻辑基本如下
+> 1. 在项目中配置 maven-publish 插件
+> 2. 将代码推送到 github 
+> 3. 将 commit 对应的 tag 推送到 github
+> 4. 基于 tag 创建一个 release
+> 5. 到 jitpack 找到自己的项目信息 , 点击 get it , 开始编译
+> 6. 当编译通过 , 就可以使用依赖了
+>
+> 补充说明 , 上述 3,4 步骤 不是必不可少 , 你探索一下 jitpack 的文档就能了解
+
+
+### 0.1 为啥用 jitpack . 流程简单
+
 用着用着发现当需要集中大量上传不同 组件的时候 , 压力就很大了 , 
 1. 我们必须 在 Sonatype 提出申请 , 并等待批准
 2. 上传后 , 需要 close / release 操作 . 
@@ -8,6 +23,113 @@
 - jitpack 存在的问题在于 , 一定概率的 [build 失败](https://github.com/jitpack/jitpack.io/issues/3733)
     - 在确定 , 自己的代码没问题的情况下 , 编译失败, 删除并重新编译即可
 
+
+### 0.2 如何用 jitpack 发布 lib
+[jitpack 官方教程](https://docs.jitpack.io/android/) , 最重要是参考 Jitpack 教程中的 代码 DEMO 
+
+简言之 , 这是我的配置文件
+
+```gardle
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'maven-publish'
+    id 'signing'
+}
+
+def GROUP_ID = 'com.github.TomGarden'
+def VERSION = '0.1.33'
+
+group = "$GROUP_ID"
+version = "$VERSION"
+
+
+android {    ... }
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+
+
+// 用于打包源代码的任务
+task andSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from android.sourceSets.main.java.srcDirs
+}
+
+// 在构建任务之前执行源代码打包任务
+build.dependsOn(andSourcesJar)
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+
+                from components.release
+                groupId = "$GROUP_ID"
+                artifactId = 'lib_log'
+                version = "$VERSION"
+
+                // 添加源码发布
+                //artifact andSourcesJar
+                artifact file("$buildDir/libs/LibLog-$VERSION-sources.jar")
+            }
+        }
+    }
+
+}
+
+```
+
+编译推送动作
+```sh
+# 确保本地编译能通过
+git add .
+git commite --message="publish to jitpack"
+git tag v0.1.33
+git push                # 代码推上仓库
+git push --tags         # tag 推上仓库 , 这一步比较重要
+```
+
+
+实际发布动作(好像不做这个动作也可以发布 , 只要推送了 tag 就可以发布 . 我先不验证了 , 做其他事情去了)
+```
+1. github/repository -> release
+2. Create release form tag
+3. Generate release notes
+4. publish release
+```
+
+然后就可以到 jitpack 检查自己的包的编译状况了
+
+格式: `https://jitpack.io/#GithubUserName/RepositoryName`
+- https://jitpack.io/#Tomgarden/lib_log
+
+[这里有小问题](https://github.com/jitpack/jitpack.io/issues/3733)
+- 这就是说本地代码编译没有问题 , jitpack 编译却有问题 . 
+- 不用担心  删除 jitpack 的失败的编译任务 , 重新编译 , 总能成功
+- 如果一直失败 , 需要再次确认自己的项目在自己的本地是否可以正常编译通过.
+
+
+
+### 0.3 发布好的lib 怎么引入项目
+
+示例如下
+```
+//ModuleName/build.gradle
+dependencies {
+    //lastVersion : https://jitpack.io/private#TomGarden/lib_log
+    implementation 'com.github.TomGarden:lib_log:v0.1.32'
+}
+
+//ModuleName/build.gradle   OR    ProjectName/build.gradle
+repositories {
+   maven { url "https://jitpack.io" }
+}
+```
 
 
 ## 0x01. 目的 , 将 Android lib 上传到 Maven Central

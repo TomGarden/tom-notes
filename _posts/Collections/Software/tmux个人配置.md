@@ -48,9 +48,11 @@ set -g status-keys vi
 
 ## tmux 全局配置
 
+[个人配置](_global_config_file)
+
 vim /etc/tmux.conf
 
-‵‵‵
+```
 # tmux 全局配置文件
 # 配置教程
 #    1. https://github.com/tmux/tmux/wiki
@@ -66,7 +68,7 @@ set -g history-limit 5000
 # 开启鼠标模式
 set -g mouse on
 
-‵‵‵
+```
 
 
 ## tmux 查看快捷键 

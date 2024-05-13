@@ -1,4 +1,5 @@
 ## 一、 关键字
+- dump core / dumpcore
 - Segmentation fault (core dumped)
 - c++ gdb core dump
 

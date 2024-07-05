@@ -22,13 +22,23 @@ $ ssh-keygen -t ed25519 -C "your_email@example.com" -f generateFileName
 
 
 # 将 公钥 写入服务端
-```
+
+方法一:
+```sh
+# 这种情况看起来是已经链接上了 ssh 通道 , 并在服务端进行操作
 [root@host ~]$ cd .ssh
 [root@host .ssh]$ cat id_rsa.pub >> authorized_keys
 
 [root@host .ssh]$ chmod 600 authorized_keys
 [root@host .ssh]$ chmod 700 ~/.ssh
 ```
+
+方法二: 
+```sh
+ssh-copy-id -i path/name.pub user@ip
+```
+
+总之就是要把 .pub 文件中的内容以追加的形式 放到服务端的 `~/.ssh/authorized_keys` 文件中
 
 # 设置 SSH，打开密钥登录功能
 编辑 `/etc/ssh/sshd_config` 文件，进行如下设置：

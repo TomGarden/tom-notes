@@ -461,3 +461,91 @@ git difftool --no-prompt  --tool=vimdiff
 # --no-prompt 用于取消对比文件前的手动确认动作 , 不需要可以不用
 # --tool      可以不用添加 , 一般默认是 vimdiff , 可以通过 git difftool --tool-help 查看其他可用工具
 ```
+
+
+## 十一. 对于占用磁盘空间过大的仓库(未验证/删除仓库使用浅克隆解决了)
+当前我们面临的情况是
+1. 本地 磁盘 500G 占用完毕 . 
+   1. 最简单的方式自然还是 , 把电脑硬盘省纪委 8T . 花点钱就好了
+   2. 但是我们没办法完成上述操作 . 
+2. 我们在管理的项目中 , 选择一个不常常操作的项目 , 在本 删除 历史节点的跟踪
+   1. ```shell
+		假设当前远程分支 有这些提交 , 本地分支跟远程分支同步 . 
+		A -- B -- C -- D -- E -- F -- G -- H -- I -- J (HEAD)
+
+		我希望本地只保留 最近 3 次提交 , 之前的内容删除,用于 节省本地磁盘空间
+		- -- - -- - -- - -- - -- - -- - -- H -- I -- J (HEAD)
+
+		我该怎么操作 , 逐步详细讲解下
+   	  ```
+3. `git reset --hard HEAD~3`
+   1. 这条命令会把你的本地分支重置为最近的 3 次提交，把 HEAD 指针移动到 HEAD~3，即 H 提交。同时，它会丢弃之前的提交记录，包括 A 到 G 提交的所有历史和修改。
+4. 虽然你已经删除了旧的提交记录，但这些提交在 Git 数据库中仍然存在。为了释放磁盘空间，你需要通过清理命令删除旧的 Git 对象：
+   1. ```shell
+		git reflog expire --expire=now --all 
+			# Reflog（参考日志）是 Git 中的一个内部机制，它记录了你在仓库中所有 HEAD 指针的移动操作。
+			# 即使是提交被回滚、重置或者分支被删除等情况下，reflog 也可以记录这些操作。
+			# 它是 Git 恢复丢失提交的重要工具。
+			#
+			# git reflog expire： 这个子命令用于标记并清除 Git 中的过期 reflog 记录。
+			#
+			# --expire=now： 这个选项指定了一个时间点，告诉 Git 应该删除哪些 reflog 记录。
+			# 			     now 表示立即过期所有记录，无论它们的创建时间是什么时候。
+			#
+			# --all： 这个选项表示对仓库中的所有分支和引用（例如 HEAD、分支、远程分支等）执行清理。
+			# 		  也就是说，--all 会清理所有分支的 reflog，而不仅仅是当前分支的。
+			#
+			# 这个命令会永久删除 reflog 中的记录，删除后将无法找回这些历史提交。
+
+		git gc --prune=now --aggressive
+			# git gc（Garbage Collection，垃圾回收）是 Git 中的一个维护工具，
+			# 用于整理和优化存储在 .git 目录中的数据，主要功能包括：
+			#	->清理无用的对象（例如被删除的分支或提交）。
+			#	->合并多个 "松散对象"（loose objects）为一个 "打包对象"（pack file），提高访问效率。
+			#	->压缩数据，以减少磁盘空间的占用。
+			#
+			# --prune=now：立即删除未引用的对象
+			# --aggressive 参数是让 git gc 以更彻底的方式进行打包和压缩。
+			#			   相比于默认的 git gc，--aggressive 会花费更多的时间和资源来优化 Git 仓库。
+	  ```	
+5. 执行上述操作后  如果 希望在此与 远程分支 同步
+   1. ```shell
+		# 这会将远程分支的最新状态（包括所有提交历史）下载到本地，但是不会影响当前的本地分支。
+		git fetch origin
+
+		# 这将使你的本地分支完全同步到远程分支 origin/main 的状态。
+		# 无论你本地之前做了哪些修改，都会被覆盖为远程分支的最新状态，包括之前被你删除的提交历史。
+		git reset --hard origin/main
+
+		# 这会将远程分支上的最新提交合并到本地。确保本地分支拉取到最新的提交。
+		git pull origin main
+	  ```
+
+### 11.1. 没有及时识别 浅克隆项目
+
+由于没有识别到仓库是浅克隆仓库 ,  push 动作总是失败 : 
+
+```shell
+# tom @ TomPc in /Volumes/Beyourself/AOSP/android-6.0.0_r1/device/lge/repo_name on git:dev/TomYeo/2024-03-19 x [16:38:01] C:1
+$ git push remote_name
+枚举对象中: 6, 完成.
+对象计数中: 100% (6/6), 完成.
+使用 12 个线程进行压缩
+压缩对象中: 100% (4/4), 完成.
+写入对象中: 100% (6/6), 6.98 MiB | 1.34 MiB/s, 完成.
+总共 6（差异 0），复用 0（差异 0），包复用 0（来自  0 个包）
+remote: fatal: did not receive expected object e32dafe146c6155a817eabcf22de1c2b7fa768f9
+错误：远程解包失败：index-pack failed
+To github.com:my_org/repo_name.git
+ ! [remote rejected] dev/TomYeo/2024-03-19 -> dev/TomYeo/2024-03-19 (failed)
+错误：无法推送一些引用到 'github.com:my_org/repo_name.git'
+```
+
+
+判断当前项目是否浅克隆仓库
+```shell
+# git 1.15+
+git rev-parse --is-shallow-repository
+```
+
+将浅克隆仓库 切换为常规仓库 : `git fetch --unshallow`

@@ -1,0 +1,21 @@
+# ACTION=="add"：当设备插入时触发。
+# ACTION=="remove"：当设备拔出时触发。
+# SUBSYSTEM=="drm"：这是显示设备的子系统，表示我们要捕获的是显示设备事件。
+# RUN+="/tom_script.sh"：当事件触发时执行你的脚本。
+# ENV{ID_MODEL}=="HDMI_DISPLAY"：确保匹配的是 HDMI 设备。你可以根据你的显示器类型修改这部分，确保唯一标识正确的设备。
+# 
+# 查询设备挂载路径(一切都是文件)
+# 显卡设备和显示输出设备通常位于 /dev/dri 或 /dev/video*
+# 查询所有显示设备信息 udevadm info --query=all --name=/dev/dri
+#
+#
+#
+#
+
+
+
+
+
+
+# 当外部显示器通过 HDMI 连接时执行脚本
+ACTION=="change", SUBSYSTEM=="drm", KERNEL=="card1", RUN+="/Volumes/Document/synchronization/tom-notes/_posts/Collections/Operations/Linux/Debian/99-hdmi-event.rules.sh"
